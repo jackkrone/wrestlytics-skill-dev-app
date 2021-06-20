@@ -11,14 +11,14 @@
 ## PRIORITY 0
 ### Product:
 **Stage 1:** A web-based tool for coaches to organize and store the training footage of their athletes and to easily track their athletes techniques and reps
-+ Prefer to create react-based web app, then use react native for mobile development
++ Prefer to create *mobile-first* react-based web app, then use react native for mobile development
 + Give users a pre-defined set of skills but also let them define new skills
     + Pre-defined skills enable better easier training for stage 3
     + Define new skills option improves understanding of what coaches want tracked
 + Create dashboards for analyzing athletes performance over time
 
 **Stage 2:** Add skill trees, i.e. learning pathways to skill mastery
-+ Skill trees may or may be visible to users or may only exist on back-end
++ Skill trees may or may not be visible to users or may only exist on back-end
 + Possible to generate custom trees for users as subset of the master tree
 + “Specify leaf, generate ‘critical path’ custom course”
 
