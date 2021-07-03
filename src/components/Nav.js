@@ -1,10 +1,10 @@
 import React from 'react';
 
-export const Nav = () => {
+export const Nav = (props) => {
     return (
         <div>
-            <h1>TEAM</h1> {/* this.props.team */}
-            {/* <HamburgerMenu /> ... to be created */}
+            <h1>props.teamOrAthlete</h1>
+            {props.children /* reason for this is for BurgerMenu or Stopwatch inclusion */}
         </div>
     )
 }

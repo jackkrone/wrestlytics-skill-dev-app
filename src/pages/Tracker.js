@@ -8,7 +8,9 @@ import React from 'react';
 export const Tracker = () => {
     return (
         <div>
-            <Nav /> {/* This instance may require a child for stopwatch */}
+            <Nav>
+                {/*<Stopwatch /> ...to be created later*/}
+            </Nav>
             <Main>
                 {/* Child elems should be techniques being tracked */}
             </Main>
