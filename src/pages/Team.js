@@ -9,12 +9,7 @@ import Footer from '../components/Main';
 // Also import BurgerMenu, CompareButton, and BeginButton once created
 
 
-// example athlete array, this is just to see if the athletes render correctly
-const athletes = ['charlie', 'emma', 'will', 'sarah']
-
-
-
-export const Team = (props) => {
+export default function Team(props) {
     /* need some logic here before return statement regarding what var to pass 
     to Main and to footer, e.g.:
     if () {const mainVar = }
@@ -22,16 +17,19 @@ export const Team = (props) => {
     
     */
     return (
-        <div className=Team>
-            <Nav>
+        <div className="Team">
+            <Nav navHeader={props.teamName} >
                 {/* <BurgerMenu /> */}
             </Nav>
             <SubNav/>
             <Main>
-                {athletes}
+                <br/>
+                {props.athletes.map(ath => <li><button>{ath}</button></li>)}
             </Main>
             <Footer>
                 {/* Button for Begin or Compare */}
+                <br />
+                <button>Compare</button>
             </Footer>
         </div>
     )

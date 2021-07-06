@@ -1,10 +1,15 @@
-import React from 'react';
-import Team from '../pages/Team';
+import Team from './pages/Team';
 
-function App = () => {
+// example user object... this object should be retrieved from the server following login/auth
+const user = {
+    teamName: 'Team Name',
+    athletes: ['charlie', 'emma', 'will', 'sarah']
+}
+
+export default function App() {
     return (
         <div className="App">
-            <Team />
+            <Team teamName={user.teamName} athletes={user.athletes}/>
         </div>
     )
 };

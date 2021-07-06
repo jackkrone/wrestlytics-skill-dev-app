@@ -3,13 +3,12 @@
 
 // This component requires a {this.props.children} inside the render
 
-import React from 'react';
 
-export const Main = (props) => {
+export default function Main(props) {
+
     return (
-        <div>
-            <ul>{props.children}</ul>
-            {/* each one of these ^ needs to be a button as well, not only a list */}
+        <div className="Main">
+            {props.children}
         </div>
     )
 }
