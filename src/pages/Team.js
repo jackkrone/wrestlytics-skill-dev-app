@@ -7,7 +7,8 @@ import SubHeader from '../components/SubHeader';
 import Main from '../components/Main';
 import Footer from '../components/Footer';
 import Menu from '../components/Menu';
-// Also import BurgerMenu, CompareButton, and BeginButton once created
+import Compare from '../components/Compare';
+// import Begin from '..components/Begin';
 
 
 export default function Team(props) {
@@ -28,9 +29,9 @@ export default function Team(props) {
                 {props.athletes.map(ath => <li><button>{ath}</button></li>)}
             </Main>
             <Footer>
-                {/* Button for Begin or Compare */}
                 <br />
-                <button>Compare</button>
+                <Compare />
+                {/* <Begin /> */}
             </Footer>
         </div>
     )
