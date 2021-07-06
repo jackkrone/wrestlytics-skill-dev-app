@@ -1,11 +1,11 @@
 // This is the practice tab
-// Currently it is a button that does nothing
+// Clicking on it will update the state of the Team page
 
 
-export default function Practice() {
+export default function Practice(props) {
     return (
         <div className="Practice">
-            <button>Practice</button>
+            <button onClick={props.handleClick}>Practice</button>
         </div>
     )
 }

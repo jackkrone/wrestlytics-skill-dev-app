@@ -2,10 +2,10 @@
 // Currently it is a button that does nothing
 
 
-export default function Track() {
+export default function Track(props) {
     return (
         <div className="Track">
-            <button>Track</button>
+            <button onClick={props.handleClick}>Track</button>
         </div>
     )
 }

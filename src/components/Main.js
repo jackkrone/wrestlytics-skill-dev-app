@@ -8,7 +8,9 @@ export default function Main(props) {
 
     return (
         <div className="Main">
-            {props.children}
+            <ul>
+                {props.children}
+            </ul>
         </div>
     )
 }

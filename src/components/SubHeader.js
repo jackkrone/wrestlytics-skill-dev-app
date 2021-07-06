@@ -2,11 +2,12 @@
 import Track from './Track';
 import Practice from './Practice';
 
-export default function SubHeader() {
+// If either component within SubHeader is clicked they will change the state of <Team />
+export default function SubHeader(props) {
     return (
         <div className="SubNav">
-            <Track /> {/* this is a button... how to make clickable? */}
-            <Practice /> {/* If these are clicked on they need to change the state of main */}
+            <Track handleClick={props.handleClick}/> 
+            <Practice handleClick={props.handleClick}/>
         </div>
     )
 };
