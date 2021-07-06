@@ -2,10 +2,11 @@
 This page appears after the coach signs in, shows the coach's team and tabs for
 tracking and practicing
 */
-import Nav from '../components/Nav';
-import SubNav from '../components/SubNav';
+import Header from '../components/Header';
+import SubHeader from '../components/SubHeader';
 import Main from '../components/Main';
-import Footer from '../components/Main';
+import Footer from '../components/Footer';
+import Menu from '../components/Menu';
 // Also import BurgerMenu, CompareButton, and BeginButton once created
 
 
@@ -18,10 +19,10 @@ export default function Team(props) {
     */
     return (
         <div className="Team">
-            <Nav navHeader={props.teamName} >
-                {/* <BurgerMenu /> */}
-            </Nav>
-            <SubNav/>
+            <Header title={props.teamName} >
+                <Menu />
+            </Header>
+            <SubHeader/>
             <Main>
                 <br/>
                 {props.athletes.map(ath => <li><button>{ath}</button></li>)}

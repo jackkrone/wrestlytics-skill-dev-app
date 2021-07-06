@@ -2,7 +2,7 @@
 import Track from './Track';
 import Practice from './Practice';
 
-export default function SubNav() {
+export default function SubHeader() {
     return (
         <div className="SubNav">
             <Track /> {/* this is a button... how to make clickable? */}

@@ -11,5 +11,6 @@ export default function App() {
         <div className="App">
             <Team teamName={user.teamName} athletes={user.athletes}/>
         </div>
+
     )
 };
