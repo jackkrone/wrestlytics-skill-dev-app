@@ -13,7 +13,7 @@ import TrackSelections from '../components/TrackSelections';
 
 
 // Team page function component:
-export default function Team(props) {
+export default function TeamPage(props) {
     // set up state hook
     const [teamState, setTeamState] = useState("track");
 
@@ -34,7 +34,7 @@ export default function Team(props) {
     }
 
     return (
-        <div className="Team">
+        <div className="TeamPage">
             <Header title={props.teamName} >
                 <Menu />
             </Header>

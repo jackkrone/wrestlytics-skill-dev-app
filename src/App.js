@@ -1,4 +1,4 @@
-import Team from './pages/Team';
+import TeamPage from './pages/TeamPage';
 
 // example user object... this object should be retrieved from the server following login/auth
 const user = {
@@ -9,7 +9,7 @@ const user = {
 export default function App() {
     return (
         <div className="App">
-            <Team teamName={user.teamName} athletes={user.athletes}/>
+            <TeamPage teamName={user.teamName} athletes={user.athletes}/>
         </div>
 
     )
