@@ -6,8 +6,8 @@ import SubHeader from '../components/SubHeader';
 import Main from '../components/Main';
 import Footer from '../components/Footer';
 import Menu from '../components/Menu';
-import Compare from '../components/Compare';
-import Begin from '../components/Begin';
+import CompareButton from '../components/CompareButton';
+import BeginButton from '../components/BeginButton';
 import PracticeSelections from '../components/PracticeSelections';
 import TrackSelections from '../components/TrackSelections';
 
@@ -27,10 +27,10 @@ export default function Team(props) {
     let footButton = undefined;
     if (teamState === 'track') {
         mainList = <TrackSelections athletes={props.athletes} />
-        footButton = <Compare />;
+        footButton = <CompareButton />;
     } else if (teamState === 'practice') {
         mainList = <PracticeSelections />;
-        footButton = <Begin />;
+        footButton = <BeginButton />;
     }
 
     return (
