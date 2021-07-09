@@ -8,7 +8,8 @@ import Footer from '../components/Footer';
 import Menu from '../components/Menu';
 import CompareButton from '../components/CompareButton';
 import BeginButton from '../components/BeginButton';
-import PracticeSelections from '../components/PracticeSelections';
+import PracticeSelections1 from '../components/PracticeSelections1';
+// import Practice Selections2 from '../components/PracticeSelections2';
 import TrackSelections from '../components/TrackSelections';
 
 
@@ -21,6 +22,9 @@ export default function TeamPage(props) {
     // (either track or practice state)
     const handleSubHeaderClick = (event) => {
         setTeamState(event.target.textContent.toLowerCase());
+        /* Note: this could also be event.target.value and I would need to set a value="..."
+        for each of the buttons in SubHeader. Using target.value is likely the more common construction
+        and more reselient to future app updates */
     }
 
     let mainList = undefined;
@@ -29,7 +33,7 @@ export default function TeamPage(props) {
         mainList = <TrackSelections athletes={props.athletes} />
         footButton = <CompareButton />;
     } else if (teamState === 'practice') {
-        mainList = <PracticeSelections />;
+        mainList = <PracticeSelections1 />;
         footButton = <BeginButton />;
     }
 
