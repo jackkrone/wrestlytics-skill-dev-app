@@ -15,19 +15,16 @@ const user = {
 export default function App() {
     return (
         <div className="App">
-            <TeamPage teamName={user.teamName} athletes={user.athletes}/>
-            {/* I need to clean this up before running app again... 
-            I want to pass props to all routes */}
-            {/*<Router>
+            <Router>
                     <Switch>
-                        <Route exact path="/" component={TeamPage} />
+                        <Route exact path="/" render={(routeProps) => <TeamPage {...routeProps} teamName={user.teamName} athletes={user.athletes} />} />
                         <Route exact path="/practice" component={PracticePage} />
 
 
-                        {/* <Route path="*" component={404NotFound} ...create eventually with 404NotFound page /}
-                        {/* Guide: https://knowbody.github.io/react-router-docs/guides/NotFound.html /}
+                        {/* <Route path="*" component={404NotFound} ...create eventually with 404NotFound page */}
+                        {/* Guide: https://knowbody.github.io/react-router-docs/guides/NotFound.html */}
                     </Switch>
-            </Router> */}
+            </Router>
         </div>
     )
 };

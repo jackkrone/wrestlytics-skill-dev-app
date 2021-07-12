@@ -5,7 +5,7 @@ import { HiMenu } from 'react-icons/hi';
 export default function Menu() {
     return (
         <div className="Menu">
-            <HiMenu />
+            <button><HiMenu /></button>
         </div>
     )
 }
