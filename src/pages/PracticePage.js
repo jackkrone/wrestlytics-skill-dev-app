@@ -7,7 +7,7 @@ import Main from '../components/Main';
 import Footer from '../components/Footer';
 import EndButton from '../components/EndButton';
 
-export const PracticePage = () => {
+export default function PracticePage() {
     return (
         <div className="PracticePage">
             <Header title="Athlete Name"> {/* athlete name needs to be passed as props */}
