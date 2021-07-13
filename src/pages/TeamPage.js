@@ -6,12 +6,14 @@ import SubHeader from '../components/SubHeader';
 import Main from '../components/Main';
 import Footer from '../components/Footer';
 import Menu from '../components/Menu';
-import CompareButton from '../components/CompareButton';
-import PracticeSelections1 from '../components/PracticeSelections1';
-import PracticeSelections2 from '../components/PracticeSelections2';
-import BeginButton from '../components/BeginButton';
-import NextButton from '../components/NextButton';
-import TrackSelections from '../components/TrackSelections';
+import CompareButton from '../components/team-page-specific/CompareButton';
+import PracticeSelections1 from '../components/team-page-specific/PracticeSelections1';
+import PracticeSelections2 from '../components/team-page-specific/PracticeSelections2';
+import BeginButton from '../components/team-page-specific/BeginButton';
+import NextButton from '../components/team-page-specific/NextButton';
+import TrackSelections from '../components/team-page-specific/TrackSelections';
+import TrackTab from '../components/team-page-specific/TrackTab';
+import PracticeTab from '../components/team-page-specific/PracticeTab';
 
 
 // Team page function component:
@@ -37,10 +39,15 @@ export default function TeamPage(props) {
     let practiceSelections;
     let nextOrBeginButton;
     if (practiceTabState === 'selections1') {
-        practiceSelections = <PracticeSelections1 />;
+        practiceSelections = <PracticeSelections1
+                                athletes={props.athletes}
+                                setAthleteChoice={props.setAthleteChoice}
+                            />;
         nextOrBeginButton = <NextButton handleClick={handleNextClick}/>;
     } else if (practiceTabState === 'selections2') {
-        practiceSelections = <PracticeSelections2 />;
+        practiceSelections = <PracticeSelections2
+                                setTechniqueChoice={props.setTechniqueChoice}
+                            />;
         nextOrBeginButton = <BeginButton />;
         // ^^^ This var will eventually include a backButton that changes state back to selections1
     }
@@ -60,7 +67,10 @@ export default function TeamPage(props) {
             <Header title={props.teamName} >
                 <Menu />
             </Header>
-            <SubHeader handleClick={handleSubHeaderClick}/>
+            <SubHeader>
+                <TrackTab handleClick={handleSubHeaderClick}/> 
+                <PracticeTab handleClick={handleSubHeaderClick}/>
+            </SubHeader>
             <Main>
                 {mainList}
             </Main>
