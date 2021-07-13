@@ -6,15 +6,19 @@ import SubHeader from '../components/SubHeader';
 import Main from '../components/Main';
 import Footer from '../components/Footer';
 import Menu from '../components/Menu';
-import CompareButton from '../components/team-page-specific/CompareButton';
-import PracticeSelections1 from '../components/team-page-specific/PracticeSelections1';
-import PracticeSelections2 from '../components/team-page-specific/PracticeSelections2';
-import BeginButton from '../components/team-page-specific/BeginButton';
-import NextButton from '../components/team-page-specific/NextButton';
-import BackButton from '../components/team-page-specific/BackButton';
-import TrackSelections from '../components/team-page-specific/TrackSelections';
-import TrackTab from '../components/team-page-specific/TrackTab';
-import PracticeTab from '../components/team-page-specific/PracticeTab';
+
+import TrackTab from '../components/for-team-page/track-tab-view/TrackTab';
+import CompareButton from '../components/for-team-page/track-tab-view/CompareButton';
+import TrackSelections from '../components/for-team-page/track-tab-view/TrackSelections';
+
+import PracticeTab from '../components/for-team-page/practice-tab-view/PracticeTab';
+import PracticeSelections1 from '../components/for-team-page/practice-tab-view/PracticeSelections1';
+import PracticeSelections2 from '../components/for-team-page/practice-tab-view/PracticeSelections2';
+import BeginButton from '../components/for-team-page/practice-tab-view/BeginButton';
+import NextButton from '../components/for-team-page/practice-tab-view/NextButton';
+import BackButton from '../components/for-team-page/practice-tab-view/BackButton';
+
+
 
 
 // Team page function component:

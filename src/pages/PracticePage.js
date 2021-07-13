@@ -5,7 +5,8 @@
 import Header from '../components/Header';
 import Main from '../components/Main';
 import Footer from '../components/Footer';
-import EndButton from '../components/practice-page-specific/EndButton';
+import EndButton from '../components/for-practice-page/EndButton';
+// import Counter from '../components/practice-page-specfic/Counter';
 
 export default function PracticePage(props) {
     return (
