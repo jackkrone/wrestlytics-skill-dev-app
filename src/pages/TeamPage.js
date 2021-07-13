@@ -22,20 +22,9 @@ export default function TeamPage(props) {
     const [teamState, setTeamState] = useState("track");
     const [practiceTabState, setPracticeTabState] = useState("selections1")
 
-    /* The following two arrow functions and two if...else statements render TeamPage according to its
+
+    /* The following two if...else statements render TeamPage according to its
     teamState and practiceSelectionsState */
-    const handleSubHeaderClick = (event) => {
-        setTeamState(event.target.textContent.toLowerCase());
-        /* Note: ^^^ Using target.value is likely the more common construction here
-        and more resilient to future app updates */
-    }
-
-    /* When the user has clicked on the practice tab and clicks the next button, this will trigger
-    practiceTabState to change to "selections2" */
-    const handleNextClick = (event) => {
-        setPracticeTabState(event.target.value);
-    }
-
     let practiceSelections;
     let nextOrBeginButton;
     if (practiceTabState === 'selections1') {
@@ -43,7 +32,7 @@ export default function TeamPage(props) {
                                 athletes={props.athletes}
                                 setAthleteChoice={props.setAthleteChoice}
                             />;
-        nextOrBeginButton = <NextButton handleClick={handleNextClick}/>;
+        nextOrBeginButton = <NextButton setPracticeTabState={setPracticeTabState}/>;
     } else if (practiceTabState === 'selections2') {
         practiceSelections = <PracticeSelections2
                                 setTechniqueChoice={props.setTechniqueChoice}
@@ -68,8 +57,8 @@ export default function TeamPage(props) {
                 <Menu />
             </Header>
             <SubHeader>
-                <TrackTab handleClick={handleSubHeaderClick}/> 
-                <PracticeTab handleClick={handleSubHeaderClick}/>
+                <TrackTab setTeamState={setTeamState}/> 
+                <PracticeTab setTeamState={setTeamState}/>
             </SubHeader>
             <Main>
                 {mainList}

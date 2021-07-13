@@ -3,9 +3,14 @@
 
 
 export default function TrackTab(props) {
+    
+    const handleClick = (event) => {
+        props.setTeamState(event.target.value);
+    }
+    
     return (
         <div className="TrackTab">
-            <button onClick={props.handleClick}>Track</button>
+            <button onClick={handleClick} value="track">Track</button>
         </div>
     )
 }

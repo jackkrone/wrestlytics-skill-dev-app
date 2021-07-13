@@ -3,9 +3,14 @@
 
 
 export default function PracticeTab(props) {
+    
+    const handleClick = (event) => {
+        props.setTeamState(event.target.value);
+    }
+    
     return (
         <div className="PracticeTab">
-            <button onClick={props.handleClick}>Practice</button>
+            <button onClick={handleClick} value="practice">Practice</button>
         </div>
     )
 }
