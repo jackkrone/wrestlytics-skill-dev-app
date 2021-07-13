@@ -1,5 +1,5 @@
 import TeamPage from './pages/TeamPage';
-import PracticePage from './pages/TeamPage';
+import PracticePage from './pages/PracticePage';
 /* Resource on following import: https://www.youtube.com/watch?v=aZGzwEjZrXc&t=12s
     + Note that react route uses partial matching, so exact keyword is crucial
 */

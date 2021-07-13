@@ -9,22 +9,19 @@ import EndButton from '../components/EndButton';
 
 export default function PracticePage() {
     return (
-        <EndButton />
-
-        /*
         <div className="PracticePage">
             <Header title="Athlete Name"> {/* athlete name needs to be passed as props */}
                 {/* <Stopwatch /> ...to be created later */}
-        /*    </Header>
+            </Header>
             <Main>
                 {/* Child elems should be techniques being tracked, also need to be passed as props. 
                 I need to create a single counting component that will be repeated as many times as a the
                 number of techniques chosen. Props should populate the name of each counter comp instance */}
-        /*    </Main>
+            </Main>
             <Footer>
                 <EndButton />
                 {/*SpeechButton /> ... maybe not necessary... just listen automatically*/}
-        /*    </Footer>
+            </Footer>
         </div>
     )
 }
