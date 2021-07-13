@@ -11,6 +11,7 @@ import PracticeSelections1 from '../components/team-page-specific/PracticeSelect
 import PracticeSelections2 from '../components/team-page-specific/PracticeSelections2';
 import BeginButton from '../components/team-page-specific/BeginButton';
 import NextButton from '../components/team-page-specific/NextButton';
+import BackButton from '../components/team-page-specific/BackButton';
 import TrackSelections from '../components/team-page-specific/TrackSelections';
 import TrackTab from '../components/team-page-specific/TrackTab';
 import PracticeTab from '../components/team-page-specific/PracticeTab';
@@ -37,8 +38,13 @@ export default function TeamPage(props) {
         practiceSelections = <PracticeSelections2
                                 setTechniqueChoice={props.setTechniqueChoice}
                             />;
-        nextOrBeginButton = <BeginButton />;
-        // ^^^ This var will eventually include a backButton that changes state back to selections1
+        nextOrBeginButton = (
+            <div>
+                <BackButton setPracticeTabState={setPracticeTabState}/>
+                <BeginButton />
+            </div>
+        )
+
     }
 
     let mainList;
