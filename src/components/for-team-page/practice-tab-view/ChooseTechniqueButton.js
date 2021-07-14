@@ -5,7 +5,7 @@ more than times than the limit set by maxTechniques. It can not render if a
 technique has not been selected in the list item above the AddTechnique component.
 */
 
-export default function ChooseTechnique(props) {
+export default function ChooseTechniqueButton(props) {
     
     // handle user technique selection
     /* This needs to be an array, and changing a selection should not
@@ -15,11 +15,13 @@ export default function ChooseTechnique(props) {
     }
 
     return (
-        <li key={`Technique ${props.num}`}>
-            <select name="Choose Technique" onChange={chooseTechnique}> 
-                <option selected disabled>Choose Technique</option>
-                {props.techniqueList.map(tech => <option value={tech}>{tech}</option>)}
-            </select>
-        </li>
+        <div className="ChooseTechniqueButton">
+            <li key={`Technique ${props.num}`}>
+                <select name="Choose Technique" onChange={chooseTechnique}> 
+                    <option selected disabled>Choose Technique</option>
+                    {props.techniqueList.map(tech => <option value={tech}>{tech}</option>)}
+                </select>
+            </li>
+        </div>
     )
 }

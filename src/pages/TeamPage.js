@@ -12,8 +12,8 @@ import CompareButton from '../components/for-team-page/track-tab-view/CompareBut
 import TrackSelections from '../components/for-team-page/track-tab-view/TrackSelections';
 
 import PracticeTab from '../components/for-team-page/practice-tab-view/PracticeTab';
-import PracticeSelections1 from '../components/for-team-page/practice-tab-view/PracticeSelections1';
-import PracticeSelections2 from '../components/for-team-page/practice-tab-view/PracticeSelections2';
+import AthleteSelections from '../components/for-team-page/practice-tab-view/AthleteSelections';
+import TechniqueSelections from '../components/for-team-page/practice-tab-view/TechniqueSelections';
 import BeginButton from '../components/for-team-page/practice-tab-view/BeginButton';
 import NextButton from '../components/for-team-page/practice-tab-view/NextButton';
 import BackButton from '../components/for-team-page/practice-tab-view/BackButton';
@@ -29,17 +29,17 @@ export default function TeamPage(props) {
 
 
     /* The following two if...else statements render TeamPage according to its
-    teamState and practiceSelectionsState */
+    teamState and practiceTabState */
     let practiceSelections;
     let nextOrBeginButton;
     if (practiceTabState === 'selections1') {
-        practiceSelections = <PracticeSelections1
+        practiceSelections = <AthleteSelections
                                 athletes={props.athletes}
                                 setAthleteChoice={props.setAthleteChoice}
                             />;
         nextOrBeginButton = <NextButton setPracticeTabState={setPracticeTabState}/>;
     } else if (practiceTabState === 'selections2') {
-        practiceSelections = <PracticeSelections2
+        practiceSelections = <TechniqueSelections
                                 setTechniqueChoice={props.setTechniqueChoice}
                             />;
         nextOrBeginButton = (

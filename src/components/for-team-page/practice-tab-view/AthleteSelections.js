@@ -2,14 +2,14 @@
 // I must add a key="..." to each item. Currently a warning shows up in the console. For more:
 // https://reactjs.org/docs/lists-and-keys.html#keys
 
-export default function PracticeSelections1(props) {
+export default function AthleteSelections(props) {
 
     const chooseAthlete = (event) => {
         props.setAthleteChoice(event.target.value);
     }
 
     return (
-        <div className="PracticeSelections1">
+        <div className="AthleteSelections">
             <li>
                 <select name="Choose Athlete" onChange={chooseAthlete} >
                     <option selected disabled>Choose Athlete</option>
