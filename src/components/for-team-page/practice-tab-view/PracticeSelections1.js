@@ -1,5 +1,6 @@
 // This component goes in main when the practice tab is selected. It allows the user to set up a practice session
-
+// I must add a key="..." to each item. Currently a warning shows up in the console. For more:
+// https://reactjs.org/docs/lists-and-keys.html#keys
 
 export default function PracticeSelections1(props) {
 
@@ -15,7 +16,7 @@ export default function PracticeSelections1(props) {
                     {props.athletes.map(ath => <option value={ath}>{ath}</option>)}
                 </select>
             </li>
-            <li><button>Add Athlete +</button></li> {/* onClick, add an additional instance of dropdown */}
+            <li><button>Add Athlete<br/>(Not functional)</button></li> {/* onClick, add an additional instance of dropdown */}
         </div>
     )
 }
