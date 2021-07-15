@@ -30,7 +30,11 @@ export default function TechniqueSelections(props) {
     // addTechOrNot will be included as a variable in the return statement of this component
     let addTechniqueOrNot;
     if (numTechniques < maxTechniques) {
-        addTechniqueOrNot = <AddTechniqueButton key="Add Technique" setTechniqueChoice={props.setTechniqueChoice} />;
+        addTechniqueOrNot = <AddTechniqueButton
+                                key="Add Technique"
+                                setTechniqueChoice={props.setTechniqueChoice}
+                                techniqueChoice={props.techniqueChoice}
+                            />;
     } else {
         addTechniqueOrNot = null;
     }
