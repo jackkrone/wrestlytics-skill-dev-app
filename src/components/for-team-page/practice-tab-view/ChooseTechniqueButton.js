@@ -4,22 +4,37 @@ time each time the user clicks the Addtechnique component. It can not render
 more than times than the limit set by maxTechniques. It can not render if a
 technique has not been selected in the list item above the AddTechnique component.
 */
+// This component renders a list -- be sure to include a unique key="..." for each <li>
 
 export default function ChooseTechniqueButton(props) {
-    
-    // handle user technique selection
-    /* This needs to be an array, and changing a selection should not
-    add an additional entry to the array */
+    // Handle user technique selection and set technique options for the next render
+    /* techniqueChoice is an array, it will update each time use selects a new technique.
+    The newly selected technique gets stored at a unique index of the array according to the
+    renderNum (nth render) of this ChooseTechniqueButton component */
     const chooseTechnique = (event) => {
-        props.setTechniqueChoice(event.target.value);
+        props.setTechniqueChoice(
+            (prevChoices) => {
+                let newChoice = prevChoices;
+                newChoice[props.renderNum]=event.target.value;
+                return newChoice;
+            }
+        )
+
+        // filter out the chosen technique from the next dropdown list to be rendered
+        // create a filtered list for the next dropdown list to be rendered
+        const nextDropdownList = props.techniqueOptionsSubArray.filter(elem => elem !== event.target.value);
+
+        // include the list in the TechniqueOptionsArray state of TechniqueSelections
+        props.setTechniqueOptions(prevOptionsArray => [...prevOptionsArray, nextDropdownList]);
+        console.log(props.techniqueChoice)
     }
 
     return (
         <div className="ChooseTechniqueButton">
-            <li key={`Technique ${props.num}`}>
-                <select name="Choose Technique" onChange={chooseTechnique}> 
+            <li key={`Technique ${props.renderNum + 1}`}>
+                <select onChange={chooseTechnique}> 
                     <option selected disabled>Choose Technique</option>
-                    {props.techniqueList.map(tech => <option value={tech}>{tech}</option>)}
+                    {props.techniqueOptionsSubArray.map(tech => <option value={tech}>{tech}</option>)}
                 </select>
             </li>
         </div>

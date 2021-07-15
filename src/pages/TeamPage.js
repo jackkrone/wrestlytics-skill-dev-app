@@ -36,11 +36,13 @@ export default function TeamPage(props) {
         practiceSelections = <AthleteSelections
                                 athletes={props.athletes}
                                 setAthleteChoice={props.setAthleteChoice}
+                                /* athleteChoice={props.athleteChoice} */
                             />;
         nextOrBeginButton = <NextButton setPracticeTabState={setPracticeTabState}/>;
     } else if (practiceTabState === 'selections2') {
         practiceSelections = <TechniqueSelections
                                 setTechniqueChoice={props.setTechniqueChoice}
+                                techniqueChoice={props.techniqueChoice}
                             />;
         nextOrBeginButton = (
             <div>

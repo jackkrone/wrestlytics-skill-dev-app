@@ -10,13 +10,13 @@ export default function AthleteSelections(props) {
 
     return (
         <div className="AthleteSelections">
-            <li>
-                <select name="Choose Athlete" onChange={chooseAthlete} >
+            <li key="Choose Athelete">
+                <select onChange={chooseAthlete} >
                     <option selected disabled>Choose Athlete</option>
                     {props.athletes.map(ath => <option value={ath}>{ath}</option>)}
                 </select>
             </li>
-            <li><button>Add Athlete<br/>(Not functional)</button></li> {/* onClick, add an additional instance of dropdown */}
+            <li key="Add Athlete"><button>Add Athlete<br/>(Not functional)</button></li> {/* onClick, add an additional instance of dropdown */}
         </div>
     )
 }
