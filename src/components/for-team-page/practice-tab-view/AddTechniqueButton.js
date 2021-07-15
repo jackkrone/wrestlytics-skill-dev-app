@@ -7,7 +7,9 @@ export default function AddTechniqueButton(props) {
     // This event handler increase techniqueChoice array length by 1
     // This triggers an additional render of ChooseTechniqueButton
     const handleClick = () => {
-        props.setTechniqueChoice((prevChoice) => [...prevChoice, null])
+        props.setTechniqueChoice((prevChoice) => [...prevChoice, "Choose Technique"])
+                                                /* ^^^ this includes "Choose Technique" to set the
+                                                default value of the next dropdown list */
     }
     
     return (

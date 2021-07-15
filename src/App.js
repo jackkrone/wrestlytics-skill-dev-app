@@ -14,8 +14,8 @@ const user = {
 
 export default function App() {
     // set up state hooks
-    const [athleteChoice, setAthleteChoice] = useState(null);
-    const [techniqueChoice, setTechniqueChoice] = useState([null]);
+    const [athleteChoice, setAthleteChoice] = useState("Choose Athlete");
+    const [techniqueChoice, setTechniqueChoice] = useState(["Choose Technique"]);
 
     return (
         <div className="App">
@@ -28,7 +28,7 @@ export default function App() {
                                         teamName={user.teamName}
                                         athletes={user.athletes}
                                         setAthleteChoice={setAthleteChoice}
-                                        /* athleteChoice={athleteChoice} */
+                                        athleteChoice={athleteChoice}
                                         setTechniqueChoice={setTechniqueChoice}
                                         techniqueChoice={techniqueChoice}
                                     />

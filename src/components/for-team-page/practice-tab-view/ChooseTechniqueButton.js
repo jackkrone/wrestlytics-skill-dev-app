@@ -6,7 +6,9 @@ technique has not been selected in the list item above the AddTechnique componen
 */
 // This component renders a list -- be sure to include a unique key="..." for each <li>
 
+
 export default function ChooseTechniqueButton(props) {
+
     // Handle user technique selection and set technique options for the next render
     /* techniqueChoice is an array, it will update each time use selects a new technique.
     The newly selected technique gets stored at a unique index of the array according to the
@@ -31,10 +33,11 @@ export default function ChooseTechniqueButton(props) {
 
     return (
         <div className="ChooseTechniqueButton">
-            <li key={`Technique ${props.renderNum + 1}`}>
-                <select onChange={chooseTechnique}> 
-                    <option selected disabled>Choose Technique</option>
-                    {props.techniqueOptionsSubArray.map(tech => <option value={tech}>{tech}</option>)}
+            <li>
+                <select value={props.techniqueChoice[props.renderNum]} onChange={chooseTechnique}>
+                    <option value="Choose Technique" disabled>Choose Technique</option>
+                    {props.techniqueOptionsSubArray.map(
+                        tech => <option key={tech} value={tech}>{tech}</option>)}
                 </select>
             </li>
         </div>
