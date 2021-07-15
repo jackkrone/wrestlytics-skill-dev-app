@@ -1,29 +1,49 @@
-// This page is the actual rep counter aspect of the app
-// This is the main function of the app -- what you use while you ~Practice~
+// This page is the rep counter
+// This is the main function of the app. It's what you use while you practice
 
-// import { useState } from 'react';
+import { useState } from 'react';
 import Header from '../components/Header';
 import Main from '../components/Main';
 import Footer from '../components/Footer';
 import EndButton from '../components/for-practice-page/EndButton';
-// import Counter from '../components/practice-page-specfic/Counter';
+import Counter from '../components/for-practice-page/Counter';
 
 export default function PracticePage(props) {
+    // set up state hook for rep numbers
+    // default repCounts is an object with a key of each technique with a value of 0
+    const [repCounts, setRepCounts] = useState(
+        () => {
+            const defaultRepState = {};
+            props.techniqueChoice.map(tech => defaultRepState[tech] = 0);
+            console.log(defaultRepState);
+            return defaultRepState;
+        }
+    );
+
     return (
         <div className="PracticePage">
             <Header title={props.athleteChoice}> {/* athlete name needs to be passed as props */}
                 {/* <Stopwatch /> ...to be created later */}
             </Header>
             <Main>
-                {/* Child elems should be techniques being tracked, also need to be passed as props. 
-                I need to create a single counting component that will be repeated as many times as a the
-                number of techniques chosen. Props should populate the name of each counter comp instance */}
-                {/* props.techniqueChoice.map(tech => <Counter technique={tech}) */}
+                {/* Render a Counter component for each technique chose */}
+                {props.techniqueChoice.map(
+                    (tech, index) => {
+                        return (
+                            <Counter
+                                technique={tech}
+                                key={index}
+                                repCounts={repCounts}
+                                setRepCounts={setRepCounts}
+                            />
+                        );
+                    }
+                )}
             </Main>
             <Footer>
-                <EndButton />
+                <EndButton repCounts={repCounts}/>
                 {/*SpeechButton /> ... maybe unnecessary -- listen automatically */}
             </Footer>
         </div>
-    )
+    );
 }

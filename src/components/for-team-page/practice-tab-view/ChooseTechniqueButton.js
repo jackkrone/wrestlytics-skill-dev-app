@@ -28,7 +28,6 @@ export default function ChooseTechniqueButton(props) {
 
         // include the list in the TechniqueOptionsArray state of TechniqueSelections
         props.setTechniqueOptions(prevOptionsArray => [...prevOptionsArray, nextDropdownList]);
-        console.log(props.techniqueChoice)
     }
 
     return (
