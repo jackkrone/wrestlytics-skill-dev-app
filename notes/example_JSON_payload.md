@@ -1,10 +1,10 @@
+
 Example JSON payload:
 
 {
-   "practiceIds": {
-      "sessionId": 12345,
-      "startTime": "2021-10-09T15:30:34"
-      "endTime": 2021-10-09T15:40:02"
+   "practiceId": 12345,
+   "startTime": "2021-10-09T15:30:34",
+   "endTime": 2021-10-09T15:40:02",
    "coachId": "coachUsername",
    "teamId": 67890,
    "athleteId": "athleteUserName",
