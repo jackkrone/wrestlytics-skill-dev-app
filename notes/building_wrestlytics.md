@@ -1,3 +1,19 @@
+# 2021.07.09 Update:
+--------------------
++ Need to elaborate or change some details on Priority 0 stages.
++ Focus on viable product with NLP integration
+    + Manually counting may not make a coach's job easier or improve their performance
+    + Could possible change sketch2 so that the app is automatically listening, no need to press a button
++ Potential synchronous benefits with fanaticwrestling.com business model
+    + Enable content creates (i.e. coaches) to earn more
+    + Creator ecosystem increases notoriety
++ Potential freemium model: free video storage up to X gigs.
++ Note to self: incorporate scratch notes on wrestlytics that are stored on google drive
+
+
+# Original Document:
+====================
+
 # Building Wrestlytics
 ### Table of Contents
 0. Product, market, business model, growth model
