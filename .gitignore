@@ -6,15 +6,15 @@
 #==========#
 
 # dependencies
-node_modules
-client/.pnp   # this came with create-react-app as '/.pnp'
+/client/node_modules
+/client/.pnp   # this came with create-react-app as '/.pnp'
 .pnp.js
 
 # testing
-client/coverage
+/client/coverage
 
 # production
-client/build
+/client/build
 
 # misc
 .DS_Store
@@ -32,4 +32,6 @@ yarn-error.log*
 
 ## SERVER ##
 #==========#
-## server/node_modules
+
+# dependencies
+/server/node_modules
