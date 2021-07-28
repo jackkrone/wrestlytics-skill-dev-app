@@ -5,5 +5,4 @@
 3. followed directions from './eslint_errors_issue.txt' on new node_modules dir
 4. `npm start` successfully started the app
 
-Not confident this will not lead to issues in the future. I created the react app a while back by cd'ing
-into wrestlytics directory and running `npx create react app .`.
+Not confident this will not lead to issues in the future. I created the react app a while back by cd'ing into wrestlytics directory and running `npx create react app .`.
