@@ -1,3 +1,4 @@
+/* eslint-disable */
 // This is usually just called App.js
 // I changed it's name so I can still view the React boilerplate app setup
 

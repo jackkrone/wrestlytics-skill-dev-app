@@ -1,4 +1,4 @@
-
+/* eslint-disable */
 import React, { useState } from 'react';
 import TeamPage from './pages/TeamPage';
 import PracticePage from './pages/PracticePage';

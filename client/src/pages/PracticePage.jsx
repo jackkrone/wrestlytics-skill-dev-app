@@ -8,13 +8,13 @@ import Footer from '../components/Footer';
 import EndButton from '../components/for-practice-page/EndButton';
 import Counter from '../components/for-practice-page/Counter';
 
-export default function PracticePage(props) {
+export default function PracticePage({ techniqueChoice, athleteChoice }) {
   // set up state hook for rep numbers
   // default repCounts is an object with a key of each technique with a value of 0
   const [repCounts, setRepCounts] = useState(
     () => {
       const defaultRepState = {};
-      props.techniqueChoice.map((tech) => defaultRepState[tech] = 0);
+      techniqueChoice.map((tech) => defaultRepState[tech] = 0);
       console.log(defaultRepState);
       return defaultRepState;
     },
@@ -22,14 +22,14 @@ export default function PracticePage(props) {
 
   return (
     <div className="PracticePage">
-      <Header title={props.athleteChoice}>
+      <Header title={athleteChoice}>
         {' '}
         {/* athlete name needs to be passed as props */}
         {/* <Stopwatch /> ...to be created later */}
       </Header>
       <Main>
         {/* Render a Counter component for each technique chose */}
-        {props.techniqueChoice.map(
+        {techniqueChoice.map(
           (tech, index) => (
             <Counter
               technique={tech}

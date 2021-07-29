@@ -7,10 +7,10 @@ React was not detecting a change in props, as I was modifying the original objec
 rather than replacing it. The solution was to use the spread operator in MinusOneButton
 and in PlusOneButton
 */
+import React from 'react';
 
-export default function Reps(props) {
-
-    return (
-        <h3>{props.repCounts[props.technique]}</h3>
-    );
+export default function Reps({ repCounts, technique}) {
+  return (
+    <h3>{repCounts[technique]}</h3>
+  );
 }
