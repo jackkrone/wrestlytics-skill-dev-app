@@ -20,9 +20,11 @@ export default function PracticePage({ techniqueChoice, athleteChoice }) {
     },
   );
 
+  console.log(athleteChoice);
+
   return (
     <div className="PracticePage">
-      <Header title={athleteChoice}>
+      <Header title={athleteChoice.name}>
         {' '}
         {/* athlete name needs to be passed as props */}
         {/* <Stopwatch /> ...to be created later */}

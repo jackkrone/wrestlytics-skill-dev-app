@@ -7,9 +7,9 @@ import React from 'react';
 export default function TrackSelections({ athletes }) {
   return (
     <div className="TrackSelections">
-      <li key="team stats"><button>team stats</button></li>
+      <li key="team stats"><button>Team data</button></li>
       {/* ^^^ Eventually convert to its own component */}
-      {athletes.map((ath) => <li key={ath}><button>{ath}</button></li>)}
+      {athletes.map((elem) => <li key={elem.name}><button>{elem.name}</button></li>)}
       <li key="add new athlete"><button>+ add new athlete</button></li>
       {/* ^^^ Eventually convert to its own component */}
     </div>

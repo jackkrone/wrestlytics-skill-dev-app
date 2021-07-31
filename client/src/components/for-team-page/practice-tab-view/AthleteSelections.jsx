@@ -10,15 +10,22 @@ import React from 'react';
 export default function AthleteSelections({ athletes, athleteChoice, setAthleteChoice }) {
   // Handle athlete choice
   const chooseAthlete = (event) => {
-    setAthleteChoice(event.target.value);
+    console.log(event.target.value);
+    // find id that corresponds to name saved in event.target.value
+    // (seems like there must be a better way that doesn't require find id like this)
+    let fullAthleteInfo = athletes.filter((elem) => elem.name === event.target.value);
+    fullAthleteInfo = fullAthleteInfo[0]; // ensure there is only one result
+
+    // use id in new athlete choice
+    setAthleteChoice(fullAthleteInfo);
   };
 
   return (
     <div className="AthleteSelections">
       <li key="Choose Athlete">
-        <select value={athleteChoice} onChange={chooseAthlete}>
+        <select value={athleteChoice.name} onChange={chooseAthlete}>
           <option value="Choose Athlete" disabled>Choose Athlete</option>
-          {athletes.map((ath) => <option key={ath} value={ath}>{ath}</option>)}
+          {athletes.map((elem) => <option key={elem.id} value={elem.name}>{elem.name}</option>)}
         </select>
       </li>
       <li key="Add Athlete"><button>Add Athlete<br/>(Not functional)</button></li>
