@@ -7,7 +7,7 @@ pages that react-router serves.
 
 const express = require('express');
 const cors = require('cors');
-const teamPageRouter = require('./routes/teamPageRouter');
+const homeRouter = require('./routes/homeRouter');
 
 // Create a new backend app
 const app = express();
@@ -21,29 +21,10 @@ app.use(express.json()); // instructs app to parse all incoming requests with JS
 //========//
 
 // Create/POST a practice session
-/*
-app.post('/practice'
-  (req, res, next) => {
-    try {
-      // set up async query
-      const { teamId, athleteId } = req.body; // not 100% confident this is constructed correctly
-      
-      const addPractice = await pool.query(
-        `INSERT INTO practices (team_id, athlete_id)
-         VALUES ($1, $2)
-         RETURNING *`,
-        [teamId, athleteId]
-      )
-      
-      // res.json(addPractice) // .json() converts to json and calls res.send()
-    } catch (err) {
-      console.error(err.message);
-    }
-  });
-*/
+//app.use('practice', practicePageRouter);
 
 // Read/GET athlete names and technique list
-app.use('/', teamPageRouter);
+app.use('/', homeRouter);
 
 
 // Read/GET practice data
