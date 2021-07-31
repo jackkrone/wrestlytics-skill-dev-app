@@ -37,9 +37,9 @@ homeRouter.get('',
            WHERE athlete_id=$1`,
           [elem.athlete_id]
         );
-        const athleteId = elem.athlete_id;
-        const athleteName = athleteNameQuery.rows[0].first_name;
-        athletesList.push({athleteId, athleteName});
+        const id = elem.athlete_id;
+        const name = athleteNameQuery.rows[0].first_name;
+        athletesList.push({id, name});
       }
 
       // Query activity id, then techniques
@@ -52,7 +52,7 @@ homeRouter.get('',
       const activityId = activityIdQuery.rows[0].activity_id;
       
       const techniquesListQuery = await pool.query(
-        `SELECT technique_id, technique_name
+        `SELECT technique_id AS id, technique_name AS name
          FROM techniques
          WHERE activity_id=$1`,
         [activityId]
