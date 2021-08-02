@@ -5,33 +5,30 @@ escapes, etc. and providing a dropdown list for each category. */
 
 import React from 'react';
 
-export default function TechniqueSelections({
-  techniquesList, techniqueChoice, setTechniqueChoice,
-}) {
+export default function TechniqueSelections({ techniqueChoice, setTechniqueChoice }) {
+  // change checked property to opposite value
   const handleChange = ({ target }) => {
-    // change checked property to opposite value
     setTechniqueChoice(
       (prevChoice) => {
-        // Must use JSON method to update this state
-        // An object property change isn't interpreted by React as state change
-        // So even when using setState, it will not trigger a re-render
         const newChoice = JSON.parse(JSON.stringify(prevChoice));
-        newChoice[target.id].checked = !newChoice[target.id].checked;
+        const index = target.id;
+        newChoice[index].checked = !newChoice[index].checked;
         return newChoice;
       },
     );
   };
 
+
   return (
     <div className="TechniqueSelections">
-      {techniquesList.map(
-        (elem) => (
+      {techniqueChoice.map(
+        (elem, index) => (
           <div>
             <label key={elem.id} htmlFor={elem.id}>
               <input
                 type="checkbox"
-                id={elem.id}
-                checked={techniqueChoice[elem.id].checked}
+                id={index}
+                checked={elem.checked}
                 onChange={handleChange}
               />
               {elem.name}

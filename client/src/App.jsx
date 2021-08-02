@@ -29,15 +29,10 @@ export default function App() {
     // Following if block essentially sets techniqueChoice's initial state
     // It can't be set in useState() because it relies on the useEffect API call  
     if (techniqueChoice === null) {
-      const newTechniqueChoice = {};
-      userVars.techniquesList.forEach(
-        (elem) => {
-          // This stores id, name, and checkbox state (whether the technique is chosen)
-          newTechniqueChoice[elem.id] = {name: elem.name, checked: false};
-        }
-      );
+      const newTechniqueChoice = JSON.parse(JSON.stringify(userVars.techniquesList));
+      newTechniqueChoice.map((elem) => elem.checked = false);
       setTechniqueChoice(newTechniqueChoice);
-      }
+    }
 
     return (
         <div className="App">
@@ -53,7 +48,6 @@ export default function App() {
                                         setAthleteChoice={setAthleteChoice}
                                         techniqueChoice={techniqueChoice}
                                         setTechniqueChoice={setTechniqueChoice}
-                                        techniquesList={userVars.techniquesList}
                                     />
                                 )
                             }
