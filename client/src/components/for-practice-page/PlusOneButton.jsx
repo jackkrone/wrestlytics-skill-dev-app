@@ -7,8 +7,8 @@ export default function PlusOneButton({ setRepCounts, technique }) {
   const addOne = () => {
     setRepCounts(
       (prevRepCounts) => {
-        const newRepCounts = { ...prevRepCounts };
-        newRepCounts[technique] += 1;
+        const newRepCounts = JSON.parse(JSON.stringify(prevRepCounts));
+        newRepCounts[technique].reps += 1;
         console.log(newRepCounts);
         return newRepCounts;
       },

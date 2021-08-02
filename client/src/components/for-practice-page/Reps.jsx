@@ -11,6 +11,6 @@ import React from 'react';
 
 export default function Reps({ repCounts, technique}) {
   return (
-    <h3>{repCounts[technique]}</h3>
+    <h3>{repCounts[technique].reps}</h3>
   );
 }

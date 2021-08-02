@@ -5,11 +5,11 @@ import { BiMinus } from 'react-icons/bi';
 
 export default function MinusOneButton({ repCounts, setRepCounts, technique }) {
   const subtractOne = () => {
-    if (repCounts[technique] !== 0) {
+    if (repCounts[technique].reps !== 0) {
       setRepCounts(
         (prevRepCounts) => {
-          const newRepCounts = { ...prevRepCounts };
-          newRepCounts[technique] -= 1;
+          const newRepCounts = JSON.parse(JSON.stringify(prevRepCounts));
+          newRepCounts[technique].reps -= 1;
           console.log(newRepCounts);
           return newRepCounts;
         },

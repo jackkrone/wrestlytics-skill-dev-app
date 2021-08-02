@@ -20,14 +20,15 @@ import BackButton from '../components/for-team-page/practice-tab-view/BackButton
 
 // Team page function component:
 export default function TeamPage({
-  teamName, athletes, athleteChoice, setAthleteChoice, techniqueChoice, setTechniqueChoice
+  teamName, athletes, athleteChoice, setAthleteChoice,
+  techniquesList, techniqueChoice, setTechniqueChoice,
 }) {
   // set up state hooks
   const [teamState, setTeamState] = useState('track');
   const [practiceTabState, setPracticeTabState] = useState('selections1');
 
-  /* The following two if...else statements render TeamPage according to its
-  teamState and practiceTabState */
+  // The following two if...else statements render TeamPage according
+  // to its teamState and practiceTabState
   let practiceSelections;
   let nextOrBeginButton;
   if (practiceTabState === 'selections1') {
@@ -38,10 +39,11 @@ export default function TeamPage({
         athleteChoice={athleteChoice}
       />
     );
-    nextOrBeginButton = <NextButton setPracticeTabState={setPracticeTabState}/>;
+    nextOrBeginButton = <NextButton setPracticeTabState={setPracticeTabState} />;
   } else if (practiceTabState === 'selections2') {
     practiceSelections = (
       <TechniqueSelections
+        techniquesList={techniquesList}
         setTechniqueChoice={setTechniqueChoice}
         techniqueChoice={techniqueChoice}
       />
