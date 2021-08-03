@@ -59,13 +59,12 @@ CREATE TABLE athletes_teams (
 );
 
 CREATE TABLE practices (
-  practice_id SERIAL PRIMARY KEY, -- Consider using SERIAL instead of INT??
-  -- coach_id INT REFERENCES coaches(coach_id) ... Redudant, non-normalized. Team_id implies coach_id.
+  practice_id SERIAL PRIMARY KEY,
   team_id INT REFERENCES teams(team_id),
-  athlete_id INT REFERENCES athletes(athlete_id)
+  athlete_id INT REFERENCES athletes(athlete_id),
   /*start_time TIMESTAMP,
-  end_time TIMESTAMP,*/ -- Start and end time not crucial at the moment
-  -- activity_id VARCHAR REFERENCES activites(activity_id) ... Redudant, non-normalized. Team_id implies activity_id.
+  end_time TIMESTAMP,*/ -- Start and end time not crucial for a demo app. use CURRENT_DATE instead
+  practice_date DATE DEFAULT CURRENT_DATE
 );
 
 CREATE TABLE practices_techniques (
