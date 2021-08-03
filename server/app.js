@@ -8,6 +8,7 @@ pages that react-router serves.
 const express = require('express');
 const cors = require('cors');
 const homeRouter = require('./routes/homeRouter');
+const practicePageRouter = require('./routes/practicePageRouter');
 
 // Create a new backend app
 const app = express();
@@ -15,13 +16,13 @@ const app = express();
 // Middleware
 app.use(cors());  /* makes server accessible to any domain requesting resources via a browser
                   https://stackoverflow.com/questions/46024363/what-does-app-usecors-do#46024491 */
-app.use(express.json()); // instructs app to parse all incoming requests with JSON payloads. Parsed object saved at req.body.
+//app.use(express.json()); // instructs app to parse all incoming requests with JSON payloads. Parsed object saved at req.body.
 
 // ROUTES //
 //========//
 
 // Create/POST a practice session
-//app.use('practice', practicePageRouter);
+app.use('/practice', practicePageRouter);
 
 // Read/GET athlete names and technique list
 app.use('/', homeRouter);
