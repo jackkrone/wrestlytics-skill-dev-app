@@ -14,7 +14,7 @@ export default function EndButton({
   const endPracticeSession = () => {
     // 1a. send Post request
     // 1b. in future start with a modal that asks if the user is sure they want to end the session
-    practicePost(teamId, athleteChoice.id, Object.values(repCounts));
+    practicePagePost(teamId, athleteChoice.id, Object.values(repCounts));
 
     // 2. reset relevant states to their defaults
     setAthleteChoice({ id: null, name: 'Choose Athlete' });

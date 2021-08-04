@@ -1,7 +1,7 @@
 // This is a post request that goes in PracticePage
 // This goes in EndButton's handleClick function
 
-const practicePost = async (teamId, athleteId, repsArray) => {
+const practicePagePost = async (teamId, athleteId, repsArray) => {
   try {
     const body = { teamId, athleteId, repsArray };
     console.log(body); // ensures the object is constructed correctly
@@ -18,4 +18,4 @@ const practicePost = async (teamId, athleteId, repsArray) => {
   }
 };
 
-export default practicePost;
+export default practicePagePost;
