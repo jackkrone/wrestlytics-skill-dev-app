@@ -8,7 +8,9 @@ import Footer from '../components/Footer';
 import EndButton from '../components/for-practice-page/EndButton';
 import Counter from '../components/for-practice-page/Counter';
 
-export default function PracticePage({ techniqueChoice, athleteChoice }) {
+export default function PracticePage({
+  teamId, athleteChoice, setAthleteChoice, techniqueChoice, setTechniqueChoice,
+}) {
   // filter techniqueChoice to only include techniques with checked === true
   const techniqueChoiceFiltered = techniqueChoice.filter((elem) => elem.checked);
 
@@ -44,7 +46,12 @@ export default function PracticePage({ techniqueChoice, athleteChoice }) {
       </Main>
       <Footer>
         <EndButton
+          teamId={teamId}
           repCounts={repCounts}
+          setRepCounts={setRepCounts}
+          athleteChoice={athleteChoice}
+          setAthleteChoice={setAthleteChoice}
+          setTechniqueChoice={setTechniqueChoice}
         />
         {/* SpeechButton /> ... maybe unnecessary -- listen automatically */}
       </Footer>
