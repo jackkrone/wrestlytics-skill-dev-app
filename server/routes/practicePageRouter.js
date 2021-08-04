@@ -15,31 +15,27 @@ practicePageRouter.post('',
       
       const addPractice = await pool.query(
         `INSERT INTO practices (team_id, athlete_id)
-         VALUES ($1, $2)`,
+         VALUES ($1, $2)
+         RETURNING *`,
         [teamId, athleteId],
-        (err, results) => {
-          // throw error
-          if (err) throw err;
-
-          // Insert rows into practices_techniques
-          const practiceId = results.rows[0].practice_id;
-          repsArray.forEach(
-            async (elem) => {
-              await pool.query(
-                `INSERT INTO practices_techniques (practice_id, technique_id, reps)
-                 VALUES ($1, $2, $3)`,
-                [practiceId, elem.id, elem.reps],
-                (err, results) => {
-                  if (err) throw err;
-                  console.log(results.rows); // logs practices_techniques rows
-                },
-              );
-            },
+      );
+      
+      // Insert rows into practices_techniques
+      console.log(addPractice); // log this to see if it looks correct
+      const practiceId = addPractice.rows[0].practice_id;
+      repsArray.forEach(
+        async (elem) => {
+          const addReps = await pool.query(
+            `INSERT INTO practices_techniques (practice_id, technique_id, reps)
+             VALUES ($1, $2, $3)
+             RETURNING *`,
+            [practiceId, elem.id, elem.reps],
           );
+          console.log(addReps.rows[0]); // logs the practices_techniques rows added
         },
       );
       
-        res.status(200).send('POST Success');
+      res.status(200).send('POST Success');
     } catch (err) {
       console.error(err.message);
     }
