@@ -1,8 +1,5 @@
 // These are the routes for App.jsx
 // These routes provide information used in multiple page views, so they are called home router
-// homeRouter could be improved if it used pool.query()'s built in error handling callback function
-// This would ensure higher integrity as the async operations need to run in a specific order
-// For example, it is used in practicePageRouter
 
 const express = require('express');
 const pool = require('../db');  
