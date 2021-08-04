@@ -16,7 +16,8 @@ export default function App() {
     // set techniqueChoice initial state at the beggining of TechniqueSelections component
 
     // GET request for athletes, techniques, teamName
-    useEffect(() => {appGet(setUserVars)}, []);
+    // console.log() is only used to indicate when useEffect is running
+    useEffect(() => {appGet(setUserVars); console.log('used');}, []);
 
     // useEffect's callback won't run until after the this comp renders the first time.
     // Problem: it needs the variables from appGet to render and pass props correctly.
@@ -24,14 +25,15 @@ export default function App() {
     if (userVars === null) {
       return null;
     };
-    console.log(userVars);
 
-    // Following if block essentially sets techniqueChoice's initial state
+    // The following if block sets techniqueChoice's initial state in a sense
     // It can't be set in useState() because it relies on the useEffect API call  
     if (techniqueChoice === null) {
       const newTechniqueChoice = JSON.parse(JSON.stringify(userVars.techniquesList));
       newTechniqueChoice.map((elem) => elem.checked = false);
       setTechniqueChoice(newTechniqueChoice);
+    } else {
+      console.log(userVars); // When this is it means rendering of App comp is about to begin
     }
 
     return (
@@ -57,8 +59,12 @@ export default function App() {
                             (routeProps) => {
                                 return (
                                     <PracticePage {...routeProps}
+                                        teamId={userVars.teamId}
+                                        activityId={userVars.activityId}
                                         athleteChoice={athleteChoice}
+                                        setAthleteChoice={setAthleteChoice}
                                         techniqueChoice={techniqueChoice}
+                                        setTechniqueChoice={setTechniqueChoice}
                                     />
                                 )
                             }
