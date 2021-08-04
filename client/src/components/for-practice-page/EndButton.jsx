@@ -6,7 +6,7 @@ Then it will take the user back to the TeamPage.
 */
 import React from 'react';
 import { Link } from 'react-router-dom';
-import practicePost from '../../api/practicePost';
+import practicePagePost from '../../api/practicePagePost';
 
 export default function EndButton({
   teamId, repCounts, athleteChoice, setAthleteChoice, setTechniqueChoice,
