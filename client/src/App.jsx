@@ -18,7 +18,7 @@ export default function App() {
 
     // GET request for athletes, techniques, teamName
     // console.log() is only used to indicate when useEffect is running
-    useEffect(() => {appGet(setUserVars); console.log('used');}, []);
+    useEffect(() => {appGet(setUserVars); console.log('userVars retreived');}, []);
 
     // useEffect's callback won't run until after the this comp renders the first time.
     // Problem: it needs the variables from appGet to render and pass props correctly.
@@ -78,6 +78,7 @@ export default function App() {
                                         teamId={userVars.teamId}
                                         athleteChoice={athleteChoice}
                                         setAthleteChoice={setAthleteChoice}
+                                        techniquesList={userVars.techniquesList}
                                     />
                                 )
                             }
