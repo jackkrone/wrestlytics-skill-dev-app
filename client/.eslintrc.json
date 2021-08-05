@@ -1,0 +1,24 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+      "react/react-in-jsx-scope": "off", // Guide: https://stackoverflow.com/questions/54434376/react-error-is-declared-but-its-value-is-never-read-6133
+      "react/prop-types": "off"
+    }
+}
