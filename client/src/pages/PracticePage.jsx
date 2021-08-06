@@ -2,6 +2,8 @@
 // This is the main function of the app. It's what you use while you practice
 
 import React, { useState } from 'react';
+import { Container } from '@material-ui/core';
+
 import Header from '../components/Header';
 import Main from '../components/Main';
 import Footer from '../components/Footer';
@@ -26,7 +28,7 @@ export default function PracticePage({
   );
 
   return (
-    <div className="PracticePage">
+    <Container maxWidth="sm">
       <Header title={athleteChoice.name}>
         {/* athlete name needs to be passed as props */}
         {/* <Stopwatch /> ...to be created later */}
@@ -55,6 +57,6 @@ export default function PracticePage({
         />
         {/* SpeechButton /> ... maybe unnecessary -- listen automatically */}
       </Footer>
-    </div>
+    </Container>
   );
 }

@@ -1,6 +1,8 @@
 // This page appears after coach signs in, shows coach's team + track and practice tabs
 
 import React, { useState } from 'react';
+import { Container } from '@material-ui/core';
+
 import Header from '../components/Header';
 import SubHeader from '../components/SubHeader';
 import Main from '../components/Main';
@@ -15,7 +17,6 @@ import PracticeTab from '../components/for-team-page/PracticeTab';
 import PracticeSelections from '../components/for-team-page/PracticeSelections';
 import BeginButton from '../components/for-team-page/BeginButton';
 
-// Team page function component:
 export default function TeamPage({
   teamName, athletes, athleteChoice, setAthleteChoice,
   techniqueChoice, setTechniqueChoice,
@@ -48,7 +49,7 @@ export default function TeamPage({
   }
 
   return (
-    <div className="TeamPage">
+    <Container maxWidth="sm">
       <Header title={teamName}>
         <Menu />
       </Header>
@@ -63,6 +64,6 @@ export default function TeamPage({
         <br />
         {footButton}
       </Footer>
-    </div>
+    </Container>
   );
 }
