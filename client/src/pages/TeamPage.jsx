@@ -54,14 +54,13 @@ export default function TeamPage({
         <Menu />
       </Header>
       <SubHeader>
-        <TrackTab setTeamState={setTeamState} />
-        <PracticeTab setTeamState={setTeamState} />
+        <TrackTab teamState={teamState} setTeamState={setTeamState} />
+        <PracticeTab teamState={teamState} setTeamState={setTeamState} />
       </SubHeader>
       <Main>
         {mainList}
       </Main>
       <Footer>
-        <br />
         {footButton}
       </Footer>
     </Container>
