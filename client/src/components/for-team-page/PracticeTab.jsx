@@ -6,13 +6,13 @@
 import React from 'react';
 import { Button, Grid } from '@material-ui/core';
 
-export default function PracticeTab({ teamState, setTeamState }) {
+export default function PracticeTab({ tabState, setTabState }) {
   const handleClick = (event) => {
-    setTeamState(event.currentTarget.value);
+    setTabState(event.currentTarget.value);
   };
 
   let variant = '';
-  if (teamState === 'practice') {
+  if (tabState === 'practice') {
     variant = 'contained';
   } else {
     variant = 'outlined';

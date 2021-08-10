@@ -19,15 +19,12 @@ import BeginButton from '../components/for-team-page/BeginButton';
 
 export default function TeamPage({
   teamName, athletes, athleteChoice, setAthleteChoice,
-  techniqueChoice, setTechniqueChoice,
+  techniqueChoice, setTechniqueChoice, tabState, setTabState,
 }) {
-  // set up state hooks
-  const [teamState, setTeamState] = useState('track');
-
-  // render TeamPage according to teamState
+  // render TeamPage according to tabState
   let mainList;
   let footButton;
-  if (teamState === 'track') {
+  if (tabState === 'track') {
     mainList = (
       <TrackSelections
         athletes={athletes}
@@ -35,7 +32,7 @@ export default function TeamPage({
       />
     );
     footButton = <CompareButton />;
-  } else if (teamState === 'practice') {
+  } else if (tabState === 'practice') {
     mainList = (
       <PracticeSelections
         athletes={athletes}
@@ -54,8 +51,8 @@ export default function TeamPage({
         <Menu />
       </Header>
       <SubHeader>
-        <TrackTab teamState={teamState} setTeamState={setTeamState} />
-        <PracticeTab teamState={teamState} setTeamState={setTeamState} />
+        <TrackTab tabState={tabState} setTabState={setTabState} />
+        <PracticeTab tabState={tabState} setTabState={setTabState} />
       </SubHeader>
       <Main>
         {mainList}

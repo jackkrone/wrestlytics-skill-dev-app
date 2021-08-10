@@ -10,6 +10,7 @@ import appGet from './api/appGet';
 
 export default function App() {
     // set up state hooks
+    const [tabState, setTabState] = useState('track');
     const [athleteChoice, setAthleteChoice] = useState({id: null, name: ''});
     const [userVars, setUserVars] = useState(null); // This is necessary because useEffect's callback calls an async function
     const [techniqueChoice, setTechniqueChoice] = useState(null);
@@ -51,6 +52,8 @@ export default function App() {
                                         setAthleteChoice={setAthleteChoice}
                                         techniqueChoice={techniqueChoice}
                                         setTechniqueChoice={setTechniqueChoice}
+                                        tabState={tabState}
+                                        setTabState={setTabState}
                                     />
                                 )
                             }
@@ -66,6 +69,7 @@ export default function App() {
                                         setAthleteChoice={setAthleteChoice}
                                         techniqueChoice={techniqueChoice}
                                         setTechniqueChoice={setTechniqueChoice}
+                                        setTabState={setTabState}
                                     />
                                 )
                             }

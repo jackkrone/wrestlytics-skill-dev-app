@@ -4,13 +4,13 @@
 import React from 'react';
 import { Button, Grid } from '@material-ui/core';
 
-export default function TrackTab({ teamState, setTeamState }) {
+export default function TrackTab({ tabState, setTabState }) {
   const handleClick = (event) => {
-    setTeamState(event.currentTarget.value);
+    setTabState(event.currentTarget.value);
   };
 
   let variant = '';
-  if (teamState === 'track') {
+  if (tabState === 'track') {
     variant = 'contained';
   } else {
     variant = 'outlined';
