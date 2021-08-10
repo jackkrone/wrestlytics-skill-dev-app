@@ -1,6 +1,3 @@
-
-
-
 // This component goes in main when the practice tab is selected.
 // It allows the user to set up a practice session.
 // In the future, consider breaking this down into categories of techniques for example
@@ -9,9 +6,10 @@
 // https://reactjs.org/docs/lists-and-keys.html#keys
 
 import React from 'react';
+import { Grid, Container, Box, Select, InputLabel, MenuItem, Divider, FormControl, FormLabel, FormGroup, FormControlLabel, Checkbox } from '@material-ui/core';
 
 export default function PracticeSelections({
-  athletes, athleteChoice, setAthleteChoice, techniqueChoice, setTechniqueChoice
+  athletes, athleteChoice, setAthleteChoice, techniqueChoice, setTechniqueChoice,
 }) {
   // Handle athlete choice
   const chooseAthlete = (event) => {
@@ -38,27 +36,55 @@ export default function PracticeSelections({
   };
 
   return (
-    <div className="PracticeSelections">
-      <select key="Choose Athlete" value={athleteChoice.name} onChange={chooseAthlete}>
-        <option value="Choose Athlete" disabled>Choose Athlete</option>
-        {athletes.map((elem) => <option key={elem.id} value={elem.name}>{elem.name}</option>)}
-      </select>
-      <h4>Choose Techniques:</h4>
-      {techniqueChoice.map(
-        (elem, index) => (
-          <div key={elem.id}>
-            <label htmlFor={elem.id}>
-              <input
-                type="checkbox"
-                id={index}
-                checked={elem.checked}
-                onChange={handleChange}
-              />
-              {elem.name}
-            </label>
-          </div>
-        ),
-      )}
-    </div>
+    <Grid container direction="column" spacing={3}>
+      <Grid item>
+        <Container>
+          <FormControl fullWidth>
+            <InputLabel id="Choose-Athlete-Label">Choose Athlete</InputLabel>
+            <Select
+              labelId="Choose-Athlete-Label"
+              id="Choose Athlete"
+              value={athleteChoice.name}
+              onChange={chooseAthlete}
+            >
+              {athletes.map(
+                (elem) => <MenuItem key={elem.id} value={elem.name}>{elem.name}</MenuItem>,
+              )}
+            </Select>
+          </FormControl>
+        </Container>
+      </Grid>
+      <Grid item>
+        <Box py={2}>
+        <Divider />
+        </Box>
+      </Grid>
+      <Grid item>
+        <Container>
+          <FormControl>
+            <Box pb={2}>
+              <FormLabel component="legend">Choose Techniques:</FormLabel>
+            </Box>
+            <FormGroup>
+              {techniqueChoice.map(
+                (elem, index) => (
+                  <FormControlLabel
+                    control={(
+                      <Checkbox
+                        checked={elem.checked}
+                        onChange={handleChange}
+                        name={elem.name}
+                        id={index.toString()}
+                      />
+                    )}
+                    label={elem.name}
+                  />
+                ),
+              )}
+            </FormGroup>
+          </FormControl>
+        </Container>
+      </Grid>
+    </Grid>
   );
 }
