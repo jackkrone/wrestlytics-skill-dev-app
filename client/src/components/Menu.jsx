@@ -5,7 +5,7 @@ import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
 
 export default function Menu() {
   return (
-    <IconButton>
+    <IconButton disabled>
       <MenuRoundedIcon />
     </IconButton>
   );

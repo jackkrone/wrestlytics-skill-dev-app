@@ -17,6 +17,7 @@ export default function TrackSelections({ athletes, setAthleteChoice }) {
         <Button
           variant="contained"
           fullWidth
+          disabled
         >
           Team Data
         </Button>
@@ -38,6 +39,7 @@ export default function TrackSelections({ athletes, setAthleteChoice }) {
           variant="contained"
           startIcon={<AddRoundedIcon />}
           fullWidth
+          disabled
         >
           Add Athlete
         </Button>
