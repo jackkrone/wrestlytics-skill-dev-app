@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { Container } from '@material-ui/core';
 
 import Header from '../components/Header';
+import Menu from '../components/Menu';
 import Main from '../components/Main';
 import Footer from '../components/Footer';
 
@@ -27,7 +28,9 @@ export default function AthletePage({
 
   return (
     <Container maxWidth="sm">
-      <Header title={athleteChoice.name} />
+      <Header title={athleteChoice.name}>
+        <Menu />
+      </Header>
       <Main>
         <PracticesTable techniquesList={techniquesList} practiceHistory={practiceHistory} />
       </Main>

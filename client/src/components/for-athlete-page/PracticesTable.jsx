@@ -1,8 +1,14 @@
 // This table goes in Main of AthletePage
+// The comments in this file are not up to date
+// They were created when designing an html table
+// Now the table is done with Material UI components
+
+import React from 'react';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TableFooter, TablePagination } from '@material-ui/core';
 
 export default function PracticesTable({ techniquesList, practiceHistory }) {
   // Create an array of jsx table headers reading technique names
-  const headers = techniquesList.map((elem) => <th>{elem.name}</th>);
+  const headers = techniquesList.map((elem) => <TableCell align="right">{elem.name}</TableCell>);
 
   console.log(practiceHistory);
   // For each practice in practiceHistory,
@@ -26,26 +32,31 @@ export default function PracticesTable({ techniquesList, practiceHistory }) {
       // Trim dates to only include yyyy-mm-dd
       bodyRows.push(
         (
-          <tr>
-            <td>{practice.practiceDate.slice(0, 10)}</td>
-            {repsEntries.map((reps) => <td>{reps}</td>)}
-          </tr>
+          <TableRow>
+            <TableCell component="th" scope="row">{practice.practiceDate.slice(0, 10)}</TableCell>
+            {repsEntries.map((reps) => <TableCell align="right">{reps}</TableCell>)}
+          </TableRow>
         ),
       );
     },
   );
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Practice Date</th>
-          {headers}
-        </tr>
-      </thead>
-      <tbody>
-        {bodyRows}
-      </tbody>
-    </table>
+    <TableContainer component={Paper}>
+      <Table size="small" padding="none" style={{ tableLayout: 'fixed' }}>
+        <TableHead>
+          <TableRow>
+            <TableCell>Practice Date</TableCell>
+            {headers}
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {bodyRows}
+        </TableBody>
+        <TableFooter>
+        </TableFooter>
+      </Table>
+    </TableContainer>
   );
 }
+
