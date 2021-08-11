@@ -25,7 +25,9 @@ export default function PracticesTable({ techniquesList, practiceHistory }) {
       // Fill array indices which correspond to techniques practiced with the correct number of reps
       practice.techniques.forEach(
         (technique) => {
-          repsEntries[technique.technique_id - 1] = technique.reps;
+          repsEntries[
+            techniquesList.map((elem) => elem.id).indexOf(technique.technique_id)
+          ] = technique.reps;
         },
       );
       // Add one complete jsx row to the nonHeaderRows array
