@@ -2,11 +2,12 @@
 // This is the main function of the app. It's what you use while you practice
 
 import React, { useState } from 'react';
-import { Container } from '@material-ui/core';
+import { Container, Box, Grid } from '@material-ui/core';
 
 import Header from '../components/Header';
 import Main from '../components/Main';
 import Footer from '../components/Footer';
+import Stopwatch from '../components/for-practice-page/Stopwatch';
 import EndButton from '../components/for-practice-page/EndButton';
 import Counter from '../components/for-practice-page/Counter';
 
@@ -30,21 +31,24 @@ export default function PracticePage({
   return (
     <Container maxWidth="sm">
       <Header title={athleteChoice.name}>
-        {/* athlete name needs to be passed as props */}
-        {/* <Stopwatch /> ...to be created later */}
+        <Stopwatch />
       </Header>
       <Main>
-        {/* Render a Counter component for each technique chosen */}
-        {techniqueChoiceFiltered.map(
-          (elem) => (
-            <Counter
-              technique={elem.name}
-              key={elem.id}
-              repCounts={repCounts}
-              setRepCounts={setRepCounts}
-            />
-          )
-        )}
+        <Box pt={2}>
+          <Grid container direction="column" spacing={3}>
+            {/* Render a Counter component for each technique chosen */}
+            {techniqueChoiceFiltered.map(
+              (elem) => (
+                <Counter
+                  technique={elem.name}
+                  key={elem.id}
+                  repCounts={repCounts}
+                  setRepCounts={setRepCounts}
+                />
+              ),
+            )}
+          </Grid>
+        </Box>
       </Main>
       <Footer>
         <EndButton
