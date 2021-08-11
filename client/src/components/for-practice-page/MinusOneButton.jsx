@@ -20,7 +20,7 @@ export default function MinusOneButton({ repCounts, setRepCounts, technique }) {
 
   return (
     <IconButton onClick={subtractOne}>
-      <RemoveRoundedIcon />
+      <RemoveRoundedIcon fontSize="large" />
     </IconButton>
   );
 }

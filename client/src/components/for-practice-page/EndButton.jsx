@@ -6,6 +6,8 @@ Then it will take the user back to the TeamPage.
 */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from '@material-ui/core';
+
 import practicePagePost from '../../api/practicePagePost';
 
 export default function EndButton({
@@ -26,8 +28,14 @@ export default function EndButton({
 
   return (
     <div className="EndButton">
-      <Link to="/">
-        <button onClick={endPracticeSession}>End</button>
+      <Link to="/" style={{ textDecoration: 'none' }}>
+        <Button
+          variant="contained"
+          onClick={endPracticeSession}
+          fullWidth
+        >
+          End
+        </Button>
       </Link>
     </div>
   );

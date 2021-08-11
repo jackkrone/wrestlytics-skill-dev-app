@@ -18,7 +18,7 @@ export default function PlusOneButton({ setRepCounts, technique }) {
 
   return (
     <IconButton onClick={addOne}>
-      <AddRoundedIcon />
+      <AddRoundedIcon fontSize="large" />
     </IconButton>
   );
 }
