@@ -6,10 +6,12 @@ Then it will take the user back to the TeamPage.
 */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from '@material-ui/core';
+
 import practicePagePost from '../../api/practicePagePost';
 
 export default function EndButton({
-  teamId, repCounts, athleteChoice, setAthleteChoice, setTechniqueChoice,
+  teamId, repCounts, athleteChoice, setAthleteChoice, setTechniqueChoice, setTabState,
 }) {
   const endPracticeSession = () => {
     // 1a. send Post request
@@ -17,6 +19,7 @@ export default function EndButton({
     practicePagePost(teamId, athleteChoice.id, Object.values(repCounts));
 
     // 2. reset relevant states to their defaults
+    setTabState('practice');
     setAthleteChoice({ id: null, name: 'Choose Athlete' });
     setTechniqueChoice(null); // This will trigger a re-setting in App.jsx
     // I think you would also need to reset repCounts but the console.log()s
@@ -25,8 +28,14 @@ export default function EndButton({
 
   return (
     <div className="EndButton">
-      <Link to="/">
-        <button onClick={endPracticeSession}>End</button>
+      <Link to="/" style={{ textDecoration: 'none' }}>
+        <Button
+          variant="contained"
+          onClick={endPracticeSession}
+          fullWidth
+        >
+          End
+        </Button>
       </Link>
     </div>
   );

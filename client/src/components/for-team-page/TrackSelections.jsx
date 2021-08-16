@@ -3,24 +3,47 @@
 // https://reactjs.org/docs/lists-and-keys.html#keys
 
 import React from 'react';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import AddRoundedIcon from '@material-ui/icons/AddRounded';
+
 import AthleteButton from './AthleteButton';
 
 export default function TrackSelections({ athletes, setAthleteChoice }) {
   return (
-    <div className="TrackSelections">
-      <li key="team stats"><button>Team data</button></li>
-      {/* ^^^ Eventually convert to its own component */}
+    <Grid container direction="column" spacing={2}>
+      <Grid item>
+        {/* Eventually convert below to its own component */}
+        <Button
+          variant="contained"
+          fullWidth
+          disabled
+        >
+          Team Data
+        </Button>
+      </Grid>
       {athletes.map(
         (elem) => (
-          <AthleteButton
-            athleteName={elem.name}
-            athleteId={elem.id}
-            setAthleteChoice={setAthleteChoice}
-          />
+          <Grid item>
+            <AthleteButton
+              athleteName={elem.name}
+              athleteId={elem.id}
+              setAthleteChoice={setAthleteChoice}
+            />
+          </Grid>
         ),
       )}
-      {/* Eventually convert below to its own component */}
-      <li key="add new athlete"><button>+ add new athlete</button></li>
-    </div>
+      <Grid item>
+        {/* Eventually convert below to its own component */}
+        <Button
+          variant="contained"
+          startIcon={<AddRoundedIcon />}
+          fullWidth
+          disabled
+        >
+          Add Athlete
+        </Button>
+      </Grid>
+    </Grid>
   );
 }

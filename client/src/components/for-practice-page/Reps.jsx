@@ -8,9 +8,10 @@ rather than replacing it. The solution was to use the spread operator in MinusOn
 and in PlusOneButton
 */
 import React from 'react';
+import Typography from '@material-ui/core/typography';
 
 export default function Reps({ repCounts, technique}) {
   return (
-    <h3>{repCounts[technique].reps}</h3>
+    <Typography variant="h6">{repCounts[technique].reps}</Typography>
   );
 }

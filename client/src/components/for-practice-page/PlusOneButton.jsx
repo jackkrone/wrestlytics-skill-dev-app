@@ -1,7 +1,8 @@
 // This component adds one to the diplayed number of reps for a given technique
 
 import React from 'react';
-import { BiPlus } from 'react-icons/bi';
+import IconButton from '@material-ui/core/IconButton';
+import AddRoundedIcon from '@material-ui/icons/AddRounded';
 
 export default function PlusOneButton({ setRepCounts, technique }) {
   const addOne = () => {
@@ -16,8 +17,8 @@ export default function PlusOneButton({ setRepCounts, technique }) {
   };
 
   return (
-    <div className="MinusOne">
-      <button onClick={addOne}><BiPlus /></button>
-    </div>
+    <IconButton onClick={addOne}>
+      <AddRoundedIcon fontSize="large" />
+    </IconButton>
   );
 }

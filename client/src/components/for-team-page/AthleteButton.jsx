@@ -2,6 +2,7 @@
 // when clicked, it will link to AthletePage and set athleteChoice appropriately
 
 import { Link } from 'react-router-dom';
+import { Button } from '@material-ui/core';
 
 export default function AthleteButton({ athleteName, athleteId, setAthleteChoice }) {
   // set athlete choice when user clicks athlete button
@@ -10,10 +11,16 @@ export default function AthleteButton({ athleteName, athleteId, setAthleteChoice
   };
 
   return (
-    <li key={athleteId}>
-      <Link to="/athlete">
-        <button onClick={chooseAthlete}>{athleteName}</button>
+    <div>
+      <Link to="/athlete" style={{ textDecoration: 'none' }}>
+        <Button
+          variant="contained"
+          onClick={chooseAthlete}
+          fullWidth
+        >
+          {athleteName}
+        </Button>
       </Link>
-    </li>
+    </div>
   );
 }

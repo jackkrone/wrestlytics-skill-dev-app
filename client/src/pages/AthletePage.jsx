@@ -2,7 +2,10 @@
 // Requires a get request for specific athlete practice history
 
 import { useState, useEffect } from 'react';
+import { Container } from '@material-ui/core';
+
 import Header from '../components/Header';
+import Menu from '../components/Menu';
 import Main from '../components/Main';
 import Footer from '../components/Footer';
 
@@ -24,8 +27,10 @@ export default function AthletePage({
   console.log(practiceHistory);
 
   return (
-    <div className="AthletePage">
-      <Header title={athleteChoice.name} />
+    <Container maxWidth="sm">
+      <Header title={athleteChoice.name}>
+        <Menu />
+      </Header>
       <Main>
         <PracticesTable techniquesList={techniquesList} practiceHistory={practiceHistory} />
       </Main>
@@ -33,6 +38,6 @@ export default function AthletePage({
         <br />
         <BackButton setAthleteChoice={setAthleteChoice} />
       </Footer>
-    </div>
+    </Container>
   );
 }

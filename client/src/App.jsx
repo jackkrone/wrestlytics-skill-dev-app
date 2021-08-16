@@ -10,7 +10,8 @@ import appGet from './api/appGet';
 
 export default function App() {
     // set up state hooks
-    const [athleteChoice, setAthleteChoice] = useState({id: null, name: 'Choose Athlete'});
+    const [tabState, setTabState] = useState('track');
+    const [athleteChoice, setAthleteChoice] = useState({id: null, name: ''});
     const [userVars, setUserVars] = useState(null); // This is necessary because useEffect's callback calls an async function
     const [techniqueChoice, setTechniqueChoice] = useState(null);
     // ^^^ You can't set initial state here as it requires userVars' updated form after useEffect API call
@@ -51,6 +52,8 @@ export default function App() {
                                         setAthleteChoice={setAthleteChoice}
                                         techniqueChoice={techniqueChoice}
                                         setTechniqueChoice={setTechniqueChoice}
+                                        tabState={tabState}
+                                        setTabState={setTabState}
                                     />
                                 )
                             }
@@ -66,6 +69,7 @@ export default function App() {
                                         setAthleteChoice={setAthleteChoice}
                                         techniqueChoice={techniqueChoice}
                                         setTechniqueChoice={setTechniqueChoice}
+                                        setTabState={setTabState}
                                     />
                                 )
                             }

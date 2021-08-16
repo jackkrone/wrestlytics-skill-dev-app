@@ -1,7 +1,8 @@
 // This component subtracts one from the diplayed number of reps for a given technique
 
 import React from 'react';
-import { BiMinus } from 'react-icons/bi';
+import IconButton from '@material-ui/core/IconButton';
+import RemoveRoundedIcon from '@material-ui/icons/RemoveRounded';
 
 export default function MinusOneButton({ repCounts, setRepCounts, technique }) {
   const subtractOne = () => {
@@ -18,8 +19,8 @@ export default function MinusOneButton({ repCounts, setRepCounts, technique }) {
   };
 
   return (
-    <div className="MinusOne">
-      <button onClick={subtractOne}><BiMinus /></button>
-    </div>
+    <IconButton onClick={subtractOne}>
+      <RemoveRoundedIcon fontSize="large" />
+    </IconButton>
   );
 }
