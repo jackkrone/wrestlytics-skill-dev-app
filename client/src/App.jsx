@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import TeamPage from './pages/TeamPage';
 import PracticePage from './pages/PracticePage';
+import AthletePage from './pages/AthletePage';
 import appGet from './api/appGet';
 
 export default function App() {
@@ -17,7 +18,7 @@ export default function App() {
 
     // GET request for athletes, techniques, teamName
     // console.log() is only used to indicate when useEffect is running
-    useEffect(() => {appGet(setUserVars); console.log('used');}, []);
+    useEffect(() => {appGet(setUserVars); console.log('userVars retreived');}, []);
 
     // useEffect's callback won't run until after the this comp renders the first time.
     // Problem: it needs the variables from appGet to render and pass props correctly.
@@ -65,6 +66,19 @@ export default function App() {
                                         setAthleteChoice={setAthleteChoice}
                                         techniqueChoice={techniqueChoice}
                                         setTechniqueChoice={setTechniqueChoice}
+                                    />
+                                )
+                            }
+                        }/>
+
+                        <Route exact path="/athlete" render={
+                            (routeProps) => {
+                                return (
+                                    <AthletePage {...routeProps}
+                                        teamId={userVars.teamId}
+                                        athleteChoice={athleteChoice}
+                                        setAthleteChoice={setAthleteChoice}
+                                        techniquesList={userVars.techniquesList}
                                     />
                                 )
                             }

@@ -27,16 +27,21 @@ export default function TeamPage({
   let mainList;
   let footButton;
   if (teamState === 'track') {
-    mainList = <TrackSelections athletes={athletes} />;
+    mainList = (
+      <TrackSelections
+        athletes={athletes}
+        setAthleteChoice={setAthleteChoice}
+      />
+    );
     footButton = <CompareButton />;
   } else if (teamState === 'practice') {
     mainList = (
       <PracticeSelections
-      athletes={athletes}
-      setAthleteChoice={setAthleteChoice}
-      athleteChoice={athleteChoice}
-      setTechniqueChoice={setTechniqueChoice}
-      techniqueChoice={techniqueChoice}
+        athletes={athletes}
+        setAthleteChoice={setAthleteChoice}
+        athleteChoice={athleteChoice}
+        setTechniqueChoice={setTechniqueChoice}
+        techniqueChoice={techniqueChoice}
       />
     );
     footButton = <BeginButton />;

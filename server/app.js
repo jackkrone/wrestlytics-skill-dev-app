@@ -9,6 +9,7 @@ const express = require('express');
 const cors = require('cors');
 const homeRouter = require('./routes/homeRouter');
 const practicePageRouter = require('./routes/practicePageRouter');
+const athletePageRouter = require('./routes/athletePageRouter');
 
 // Create a new backend app
 const app = express();
@@ -27,11 +28,11 @@ app.use('/practice', practicePageRouter);
 // Read/GET athlete names and technique list
 app.use('/', homeRouter);
 
+// Read/GET practice data for a single athlete
+app.use('/athlete', athletePageRouter);
 
-// Read/GET practice data
-    // For a single athlete
-    // For entire team
-//app.use('/athlete', athletePageRoute)
+// Read/GET practice data for entire team
+
 
 
 // Update/PUT ...
