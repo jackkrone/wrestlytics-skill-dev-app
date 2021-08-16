@@ -8,7 +8,7 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 
 export default function PracticesTable({ techniquesList, practiceHistory }) {
   // Create an array of jsx table headers reading technique names
-  const headers = techniquesList.map((elem) => <TableCell align="right">{elem.name}</TableCell>);
+  const headers = techniquesList.map((elem) => <TableCell align="right" style={{ whiteSpace: 'nowrap', paddingRight: '5px' }}>{elem.name}</TableCell>);
 
   console.log(practiceHistory);
   // For each practice in practiceHistory,
@@ -36,7 +36,7 @@ export default function PracticesTable({ techniquesList, practiceHistory }) {
         (
           <TableRow>
             <TableCell component="th" scope="row">{practice.practiceDate.slice(0, 10)}</TableCell>
-            {repsEntries.map((reps) => <TableCell align="right">{reps}</TableCell>)}
+            {repsEntries.map((reps) => <TableCell align="right" style={{ paddingRight: '5px' }}>{reps}</TableCell>)}
           </TableRow>
         ),
       );
@@ -48,7 +48,7 @@ export default function PracticesTable({ techniquesList, practiceHistory }) {
       <Table size="small" padding="none" style={{ tableLayout: 'fixed' }}>
         <TableHead>
           <TableRow>
-            <TableCell>Practice Date</TableCell>
+            <TableCell style={{ width: 86 }}>Practice Date</TableCell>
             {headers}
           </TableRow>
         </TableHead>

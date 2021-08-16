@@ -5,7 +5,7 @@ import { Box, Grid, Typography } from '@material-ui/core';
 
 export default function Header({ children, title }) {
   return (
-    <Box py={1}>
+    <Box pt={4} pb={2}>
       <Grid container alignItems="center">
         <Grid item xs>
           <Typography
@@ -15,7 +15,7 @@ export default function Header({ children, title }) {
             {title}
           </Typography>
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={3} align="center">
           {children}
         </Grid>
       </Grid>
