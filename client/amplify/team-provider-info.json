@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-wrestlytics-dev-104132-authRole",
+      "UnauthRoleArn": "arn:aws:iam::596667363756:role/amplify-wrestlytics-dev-104132-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::596667363756:role/amplify-wrestlytics-dev-104132-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-wrestlytics-dev-104132-deployment",
+      "UnauthRoleName": "amplify-wrestlytics-dev-104132-unauthRole",
+      "StackName": "amplify-wrestlytics-dev-104132",
+      "StackId": "arn:aws:cloudformation:us-east-2:596667363756:stack/amplify-wrestlytics-dev-104132/338c2700-feb9-11eb-bc17-025013421dac",
+      "AmplifyAppId": "d1ev67vmtajgwp"
+    },
+    "categories": {
+      "auth": {
+        "wrestlytics4c1b96ed": {}
+      }
+    }
+  }
+}
