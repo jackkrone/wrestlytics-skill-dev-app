@@ -1,6 +1,7 @@
 // This page appears after coach signs in, shows coach's team + track and practice tabs
 
-import React, { useState } from 'react';
+import React from 'react';
+import { Auth } from 'aws-amplify';
 import { Container } from '@material-ui/core';
 
 import Header from '../components/Header';
@@ -18,9 +19,15 @@ import PracticeSelections from '../components/for-team-page/PracticeSelections';
 import BeginButton from '../components/for-team-page/BeginButton';
 
 export default function TeamPage({
-  teamName, athletes, athleteChoice, setAthleteChoice,
-  techniqueChoice, setTechniqueChoice, tabState, setTabState,
+  teamName, athletes, athleteChoice, setAthleteChoice, techniqueChoice,
+  setTechniqueChoice, tabState, setTabState, updateFormState,
 }) {
+  // Sign out function
+  const signOut = () => {
+    Auth.signOut();
+    updateFormState((prev) => ({ ...prev, formType: 'signUp' }));
+  };
+
   // render TeamPage according to tabState
   let mainList;
   let footButton;
@@ -60,6 +67,8 @@ export default function TeamPage({
       <Footer>
         {footButton}
       </Footer>
+      <br />
+      <button onClick={signOut}>Sign Out</button>
     </Container>
   );
 }

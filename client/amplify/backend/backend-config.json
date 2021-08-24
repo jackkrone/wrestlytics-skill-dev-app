@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "wrestlytics4c1b96ed": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
