@@ -177,6 +177,7 @@ export default function App() {
                       athleteChoice={athleteChoice}
                       setAthleteChoice={setAthleteChoice}
                       techniquesList={userVars.techniquesList}
+                      updateFormState={updateFormState}
                     />
                   )
                 }
