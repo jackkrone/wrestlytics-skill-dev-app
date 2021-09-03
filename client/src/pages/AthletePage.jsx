@@ -14,7 +14,7 @@ import PracticesTable from '../components/for-athlete-page/PracticesTable';
 import BackButton from '../components/for-athlete-page/BackButton';
 
 export default function AthletePage({
-  teamId, athleteChoice, setAthleteChoice, techniquesList,
+  teamId, athleteChoice, setAthleteChoice, techniquesList, updateFormState
 }) {
   // set up state hook
   const [practiceHistory, setPracticeHistory] = useState(null);
@@ -29,7 +29,7 @@ export default function AthletePage({
   return (
     <Container maxWidth="sm">
       <Header title={athleteChoice.name}>
-        <Menu />
+        <Menu updateFormState={updateFormState}/>
       </Header>
       <Main>
         <PracticesTable techniquesList={techniquesList} practiceHistory={practiceHistory} />

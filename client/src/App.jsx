@@ -8,29 +8,33 @@ import PracticePage from './pages/PracticePage';
 import AthletePage from './pages/AthletePage';
 import appGet from './api/appGet';
 
+import { Container, Grid, Button, Box, TextField, Typography } from '@material-ui/core';
+
 import { Auth, Hub } from 'aws-amplify';
 
 
 export default function App() {
-  // set up amplify state hook
+  // set up amplify related state hooks
+  // ==================================
   const [formState, updateFormState] = useState({ username: '', password: '', email: '', authCode: '', formType: 'signUp' });
   const [user, updateUser] = useState(null);
-  useEffect(()=> {
-    checkUser();
-  }, []);
+  useEffect(()=> { checkUser() }, []);
 
+  // If there is no currently authenticated user then the error message will log
+  // No need to create a conditional on the updateUser function
   async function checkUser() {
     try {
       const user = await Auth.currentAuthenticatedUser();
       console.log('user: ', user );
       updateUser(user);
-      updateFormState(() => ({ ...formState, formType: "signedIn"})); // This seems like it should only run if user is not null
+      updateFormState(() => ({ ...formState, formType: "signedIn"}));
     } catch (err) {
       console.error(err.message);
     }
   }
 
   // set up other state hooks
+  // ========================
   const [tabState, setTabState] = useState('track');
   const [athleteChoice, setAthleteChoice] = useState({id: null, name: ''});
   const [userVars, setUserVars] = useState(null); // This is necessary because useEffect's callback calls an async function
@@ -55,14 +59,12 @@ export default function App() {
     const newTechniqueChoice = JSON.parse(JSON.stringify(userVars.techniquesList));
     newTechniqueChoice.map((elem) => elem.checked = false);
     setTechniqueChoice(newTechniqueChoice);
-  } else {
-    console.log(userVars); // When this is it means rendering of App comp is about to begin
   }
 
-  // AUTH STUFF FROM HERE DOWN //
-  // ========================= //
+  // Auth stuff from here down
+  // =========================
   function onChange(event) {
-    event.persist();
+    event.persist(); // https://findanyanswer.com/what-is-event-persist
     updateFormState(() => ({ ...formState, [event.target.name]: event.target.value }));
   }
 
@@ -99,7 +101,7 @@ export default function App() {
           </>
         )
       }
-              {
+      {
         formType === 'confirmSignUp' && (
           <>
             <input name="authCode" onChange={onChange} placeholder="confirmation code" />
@@ -109,11 +111,24 @@ export default function App() {
       }
       {
         formType === 'signIn' && (
-          <>
-            <input name="username" onChange={onChange} placeholder="username" />
-            <input name="password" type="password" onChange={onChange} placeholder="password" />
-            <button onClick={signIn}>Sign In</button>
-          </>
+          <Container maxWidth="sm">
+            <Box mt={10}>
+              <Grid container direction="column" spacing={2}>
+                <Grid item>
+                  <Typography variant="h3" align="center">WRESTLYTICS</Typography>
+                </Grid>
+                <Grid item>
+                  <TextField fullWidth name="username" label="username" variant="outlined" onChange={onChange}/>
+                </Grid>
+                <Grid item>
+                  <TextField fullWidth name="password" label="password" type="password" variant="outlined" onChange={onChange}/>
+                </Grid>
+                <Grid item>
+                  <Button fullWidth variant="contained" onClick={signIn}>Sign In</Button>
+                </Grid>
+              </Grid>
+            </Box>
+          </ Container>
         )
       }
       {
@@ -162,6 +177,7 @@ export default function App() {
                       athleteChoice={athleteChoice}
                       setAthleteChoice={setAthleteChoice}
                       techniquesList={userVars.techniquesList}
+                      updateFormState={updateFormState}
                     />
                   )
                 }
