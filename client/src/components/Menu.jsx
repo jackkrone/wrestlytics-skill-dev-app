@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Auth } from 'aws-amplify';
-import { IconButton, Drawer, List, ListItem, ListItemText, ListItemIcon } from '@material-ui/core';
+import { IconButton, Drawer, List, ListItem, ListItemText, ListItemIcon, ListSubheader, Divider } from '@material-ui/core';
 import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
 import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded';
 import DescriptionIcon from '@material-ui/icons/Description';
 
-
-export default function Menu({ updateFormState }) {
+export default function Menu({ updateFormState, coachName, coachId }) {
   const [drawerState, setDrawerState] = useState(false);
 
   const toggleDrawer = () => (event) => {
@@ -37,6 +36,9 @@ export default function Menu({ updateFormState }) {
         onClose={toggleDrawer()}
       >
         <List>
+          <ListSubheader>{coachName}</ListSubheader>
+          <ListSubheader>Coach ID: #{coachId}</ListSubheader>
+          <Divider />
           <Link to="/" style={{ textDecoration: 'none' }}>
             <ListItem button onClick={signOut}>
               <ListItemIcon>

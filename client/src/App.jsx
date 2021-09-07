@@ -146,6 +146,8 @@ export default function App() {
                       tabState={tabState}
                       setTabState={setTabState}
                       updateFormState = {updateFormState}
+                      coachName={userVars.coachName}
+                      coachId={userVars.coachId}
                     />
                   )
                 }
@@ -176,6 +178,8 @@ export default function App() {
                       setAthleteChoice={setAthleteChoice}
                       techniquesList={userVars.techniquesList}
                       updateFormState={updateFormState}
+                      coachName={userVars.coachName}
+                      coachId = {userVars.coachId}
                     />
                   )
                 }
