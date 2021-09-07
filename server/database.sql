@@ -42,13 +42,13 @@ CREATE TABLE athletes (
 CREATE TABLE teams (
   team_id INT PRIMARY KEY,
   team_name VARCHAR,
-  coach_id INT REFERENCES coaches(coach_id),
   activity_id INT REFERENCES activities(activity_id)
 );
 
 CREATE TABLE coaches_teams (
   coach_id INT REFERENCES coaches(coach_id),
   team_id INT REFERENCES teams(team_id),
+  default_team BOOLEAN
   PRIMARY KEY (coach_id, team_id)
 );
 

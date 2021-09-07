@@ -6,13 +6,32 @@ const pool = require('../db');
 
 const homeRouter = express.Router();
 
-homeRouter.get('',
+homeRouter.get('/:username',
   async (req, res) => {
-    // Set Team ID manually for now, in future could be based on session or cookie variables
-    const teamId = 2;
-    
+    const username = req.params.username;
+    console.log(`user queried: ${username}`);
+
     try {
-      // Query team name
+      // Find coach name and coach ID with username
+      const coachQuery = await pool.query(
+        `SELECT first_name, coach_id
+        FROM coaches
+        WHERE username=$1`,
+        [username]
+      );
+      const coachName = coachQuery.rows[0].first_name;
+      const coachId = coachQuery.rows[0].coach_id;
+
+      //Query team_id based on coach_id and default_team value
+      const teamIdQuery = await pool.query(
+        `SELECT team_id
+         FROM coaches_teams
+         WHERE coach_id=$1 AND default_team='t'`,
+         [coachId]
+      );
+      const teamId = teamIdQuery.rows[0].team_id;
+
+      // Query team name based on the the team id
       const teamNameQuery = await pool.query(
         `SELECT team_name
          FROM teams
@@ -60,13 +79,12 @@ homeRouter.get('',
       const techniquesList = techniquesListQuery.rows;
     
       // Send response
-      infoForTeamPage  = {teamId, teamName, activityId, techniquesList, athletesList};
+      infoForTeamPage  = {teamId, coachName, coachId, teamName, activityId, techniquesList, athletesList};
       res.json(infoForTeamPage); // Needs to combine athletesList and techniquesList
     } catch (err) {
       console.error(err.message);
     }
   }
 );
-
 
 module.exports = homeRouter;
