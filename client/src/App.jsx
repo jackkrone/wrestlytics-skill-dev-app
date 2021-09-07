@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
 /* Resource on following import: https://www.youtube.com/watch?v=aZGzwEjZrXc&t=12s
-    + Note that react route uses partial matching, so keyword exact is crucial */
+    + Note that react route uses partial matching, so the keyword exact is crucial */
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import TeamPage from './pages/TeamPage';
 import PracticePage from './pages/PracticePage';
@@ -17,19 +17,19 @@ export default function App() {
   // set up amplify related state hooks
   // ==================================
   const [formState, updateFormState] = useState({ username: '', password: '', email: '', authCode: '', formType: 'signUp' });
-  const [user, updateUser] = useState(null);
+  const [username, updateUsername] = useState(null);
   useEffect(()=> { checkUser() }, []);
-
-  // If there is no currently authenticated user then the error message will log
-  // No need to create a conditional on the updateUser function
+  
+  // If there is no currently authenticated username then the error message will log
+  // No need to create a conditional on the updateUsername function
   async function checkUser() {
     try {
-      const user = await Auth.currentAuthenticatedUser();
-      console.log('user: ', user );
-      updateUser(user);
+      const userObj = await Auth.currentAuthenticatedUser();
+      updateUsername(userObj.username);
       updateFormState(() => ({ ...formState, formType: "signedIn"}));
     } catch (err) {
       console.error(err.message);
+      console.log('No currently authenticated user')
     }
   }
 
@@ -43,19 +43,12 @@ export default function App() {
   // set techniqueChoice initial state at the beggining of TechniqueSelections component
 
   // GET request for athletes, techniques, teamName
-  // console.log() is only used to indicate when useEffect is running
-  useEffect(() => {appGet(setUserVars); console.log('userVars retreived');}, []);
-
-  // useEffect's callback won't run until after the this comp renders the first time.
-  // Problem: it needs the variables from appGet to render and pass props correctly.
-  // Solution: force a first render that renders null.
-  if (userVars === null) {
-    return null;
-  };
+  useEffect(() => { appGet(setUserVars, username) }, [username]);
 
   // The following if block sets techniqueChoice's initial state in a sense
-  // It can't be set in useState() because it relies on the useEffect API call  
-  if (techniqueChoice === null) {
+  // It can't be set in useState() because it relies on the useEffect API call
+  // And I only want it to run when userVars has been retreived but technique choice has not been prev defined
+  if (userVars && !techniqueChoice) {
     const newTechniqueChoice = JSON.parse(JSON.stringify(userVars.techniquesList));
     newTechniqueChoice.map((elem) => elem.checked = false);
     setTechniqueChoice(newTechniqueChoice);
@@ -84,6 +77,7 @@ export default function App() {
   async function signIn() {
     const { username, password } = formState;
     await Auth.signIn(username, password);
+    updateUsername(username); // This triggers userVars useEffect callback function
     updateFormState(() => ({ ...formState, formType: 'signedIn'}));
   }
 
@@ -131,8 +125,12 @@ export default function App() {
           </ Container>
         )
       }
+      {/* Observation: useEffect's callback won't run until after App renders the first time (bc it is async).
+          Problem: App needs the variables from appGet to render and pass props correctly.
+          Solution: render a loading page while the async function is retreiving the data */}
+      { formType === 'signedIn' && !userVars && <h3>loading...</h3> }
       {
-        formType === 'signedIn' && (
+        formType === 'signedIn' && userVars && (
           <Router>
             <Switch>
               <Route exact path="/" render={
@@ -148,6 +146,8 @@ export default function App() {
                       tabState={tabState}
                       setTabState={setTabState}
                       updateFormState = {updateFormState}
+                      coachName={userVars.coachName}
+                      coachId={userVars.coachId}
                     />
                   )
                 }
@@ -178,6 +178,8 @@ export default function App() {
                       setAthleteChoice={setAthleteChoice}
                       techniquesList={userVars.techniquesList}
                       updateFormState={updateFormState}
+                      coachName={userVars.coachName}
+                      coachId = {userVars.coachId}
                     />
                   )
                 }

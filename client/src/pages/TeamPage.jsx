@@ -19,7 +19,7 @@ import BeginButton from '../components/for-team-page/BeginButton';
 
 export default function TeamPage({
   teamName, athletes, athleteChoice, setAthleteChoice, techniqueChoice,
-  setTechniqueChoice, tabState, setTabState, updateFormState,
+  setTechniqueChoice, tabState, setTabState, updateFormState, coachName, coachId,
 }) {
   // render TeamPage according to tabState
   let mainList;
@@ -48,7 +48,7 @@ export default function TeamPage({
   return (
     <Container maxWidth="sm">
       <Header title={teamName}>
-        <Menu updateFormState={updateFormState}/>
+        <Menu updateFormState={updateFormState} coachName={coachName} coachId={coachId} />
       </Header>
       <SubHeader>
         <TrackTab tabState={tabState} setTabState={setTabState} />
