@@ -25,11 +25,11 @@ app.use(cors());  /* makes server accessible to any domain requesting resources 
 // Create/POST a practice session
 app.use('/practice', practicePageRouter);
 
-// Read/GET athlete names and technique list
-app.use('/', homeRouter);
-
 // Read/GET practice data for a single athlete
 app.use('/athlete', athletePageRouter);
+
+// Read/GET athlete names and technique list
+app.use('/', homeRouter);
 
 // Read/GET practice data for entire team
 
