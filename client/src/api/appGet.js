@@ -1,4 +1,5 @@
 // appGet is a get request that is called in the App.jsx file
+// It GETs all relevant team and athlete info for the user
 
 const appGet = async (setUserVars, username) => {
   // Do nothing if no username is provided
