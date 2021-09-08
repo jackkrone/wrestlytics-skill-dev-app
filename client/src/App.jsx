@@ -48,14 +48,11 @@ export default function App() {
     event.persist(); // https://findanyanswer.com/what-is-event-persist
     updateFormState(() => ({ ...formState, [event.target.name]: event.target.value }));
   }
-  console.log('printed first');
-  console.log(updateFormState);
+
   // render app conditional on formState & implement using short circuiting
   const { formType } = formState;
   return (
     <>
-      {console.log('printed 2nd')}
-      {console.log(updateFormState)}
       {
         formType === 'signUp' && (
           <SignUp
