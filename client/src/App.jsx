@@ -5,14 +5,14 @@ import TeamPage from './pages/TeamPage';
 import PracticePage from './pages/PracticePage';
 import AthletePage from './pages/AthletePage';
 import appGet from './api/appGet';
-import SignUp from './components/auth/SignUp';
-import ConfirmSignUp from './components/auth/ConfirmSignUp';
+// import SignUp from './components/auth/SignUp';
+// import ConfirmSignUp from './components/auth/ConfirmSignUp';
 import SignIn from './components/auth/SignIn';
 import { Auth } from 'aws-amplify';
 
 export default function App() {
   // set up amplify related state hooks
-  const [formState, updateFormState] = useState({ username: '', password: '', email: '', authCode: '', formType: 'signUp' });
+  const [formState, updateFormState] = useState({ username: '', password: '', email: '', authCode: '', formType: 'signIn' });
   const [username, updateUsername] = useState(null);
   useEffect(()=> { checkUser() }, []);
   
@@ -60,7 +60,7 @@ export default function App() {
   const { formType } = formState;
   return (
     <>
-      {
+      {/* {
         formType === 'signUp' && (
           <SignUp
             updateFormState={updateFormState}
@@ -77,7 +77,7 @@ export default function App() {
             handleChange={handleChange}
           />
         )
-      }
+      } */}
       {
         formType === 'signIn' && (
           <SignIn

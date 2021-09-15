@@ -19,7 +19,7 @@ export default function Menu({ updateFormState, coachName, coachId }) {
   // Sign out function
   const signOut = () => {
     Auth.signOut();
-    updateFormState((prev) => ({ ...prev, formType: 'signUp' }));
+    updateFormState((prev) => ({ ...prev, formType: 'signIn' }));
     // window.location = '/';
   };
 
