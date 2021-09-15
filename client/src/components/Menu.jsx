@@ -39,7 +39,7 @@ export default function Menu({ updateFormState, coachName, coachId }) {
           <ListSubheader>{coachName}</ListSubheader>
           <ListSubheader>Coach ID: #{coachId}</ListSubheader>
           <Divider />
-          <Link to="/" style={{ textDecoration: 'none' }}>
+          <Link to="/" style={{ textDecoration: 'none', color: 'black'}}>
             <ListItem button onClick={signOut}>
               <ListItemIcon>
                 <ExitToAppRoundedIcon />
