@@ -1,18 +1,18 @@
 /* eslint-disable */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; // https://www.youtube.com/watch?v=aZGzwEjZrXc&t=12s
 import TeamPage from './pages/TeamPage';
 import PracticePage from './pages/PracticePage';
 import AthletePage from './pages/AthletePage';
 import appGet from './api/appGet';
-import SignUp from './components/auth/SignUp';
-import ConfirmSignUp from './components/auth/ConfirmSignUp';
+// import SignUp from './components/auth/SignUp';
+// import ConfirmSignUp from './components/auth/ConfirmSignUp';
 import SignIn from './components/auth/SignIn';
 import { Auth } from 'aws-amplify';
 
 export default function App() {
   // set up amplify related state hooks
-  const [formState, updateFormState] = useState({ username: '', password: '', email: '', authCode: '', formType: 'signUp' });
+  const [formState, updateFormState] = useState({ username: '', password: '', email: '', authCode: '', formType: 'signIn' });
   const [username, updateUsername] = useState(null);
   useEffect(()=> { checkUser() }, []);
   
@@ -21,14 +21,21 @@ export default function App() {
   const [athleteChoice, setAthleteChoice] = useState({id: null, name: ''});
   const [userVars, setUserVars] = useState(null);
   const [techniqueChoice, setTechniqueChoice] = useState(null);
-  useEffect(() => { appGet(setUserVars, username) }, [username]);
+  const [trigger, setTrigger] = useState(1); // When updated, triggers resetHome function
+  // set userVars as null before appGet runs, so user does not briefly see the previously logged-in users' athletes
+  useEffect(() => { setUserVars(null); appGet(setUserVars, username); }, [username]);
+  useEffect(() => { resetHome() }, [userVars, trigger]);
 
-  // Set techniqueChoice to default state once userVars have been retrieved from appGet
-  if (userVars && !techniqueChoice) {
-    const newTechniqueChoice = JSON.parse(JSON.stringify(userVars.techniquesList));
-    newTechniqueChoice.map((elem) => elem.checked = false);
-    setTechniqueChoice(newTechniqueChoice);
-  }
+  // Reset and adjust relevant state vars when the user is updated
+  // if (userVars) ensures this doesn't run on first render or when appGet is retrieving new user data
+  const resetHome = () => {
+    if (userVars) {
+      setAthleteChoice({id: null, name: ''});
+      const newTechniqueChoice = JSON.parse(JSON.stringify(userVars.techniquesList));
+      newTechniqueChoice.map((elem) => elem.checked = false);
+      setTechniqueChoice(newTechniqueChoice);
+    }
+  };
 
   // Check if a user is already signed in
   // If no currently authenticated username then error message will log
@@ -53,7 +60,7 @@ export default function App() {
   const { formType } = formState;
   return (
     <>
-      {
+      {/* {
         formType === 'signUp' && (
           <SignUp
             updateFormState={updateFormState}
@@ -70,7 +77,7 @@ export default function App() {
             handleChange={handleChange}
           />
         )
-      }
+      } */}
       {
         formType === 'signIn' && (
           <SignIn
@@ -81,7 +88,7 @@ export default function App() {
           />
         )
       }
-      {/* Problem: appGet won't run until after App renders the first time because it is async
+      {/* Problem: appGet won't run until after App renders the first time because it is an async function.
           Solution: render a loading page while the async function is retreiving the data */}
       { formType === 'signedIn' && !userVars && <h3 style={{ textAlign: 'center' }}>loading...</h3> }
       {
@@ -115,10 +122,8 @@ export default function App() {
                       teamId={userVars.teamId}
                       activityId={userVars.activityId}
                       athleteChoice={athleteChoice}
-                      setAthleteChoice={setAthleteChoice}
                       techniqueChoice={techniqueChoice}
-                      setTechniqueChoice={setTechniqueChoice}
-                      setTabState={setTabState}
+                      setTrigger={setTrigger}
                     />
                   )
                 }

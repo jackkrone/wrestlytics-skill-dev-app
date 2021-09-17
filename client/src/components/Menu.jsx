@@ -19,7 +19,7 @@ export default function Menu({ updateFormState, coachName, coachId }) {
   // Sign out function
   const signOut = () => {
     Auth.signOut();
-    updateFormState((prev) => ({ ...prev, formType: 'signUp' }));
+    updateFormState((prev) => ({ ...prev, formType: 'signIn' }));
     // window.location = '/';
   };
 
@@ -39,7 +39,7 @@ export default function Menu({ updateFormState, coachName, coachId }) {
           <ListSubheader>{coachName}</ListSubheader>
           <ListSubheader>Coach ID: #{coachId}</ListSubheader>
           <Divider />
-          <Link to="/" style={{ textDecoration: 'none' }}>
+          <Link to="/" style={{ textDecoration: 'none', color: 'black'}}>
             <ListItem button onClick={signOut}>
               <ListItemIcon>
                 <ExitToAppRoundedIcon />
