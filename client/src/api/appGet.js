@@ -9,7 +9,7 @@ const appGet = async (setUserVars, username, userReference) => {
 
   // Request user's team and athlete info if username is provided
   try {
-    const response = await fetch(`http://localhost:5000/${username}`);
+    const response = await fetch(`http://localhost:5001/${username}`);
     const parsedResponse = await response.json(); // parses json response first
     setUserVars(parsedResponse);
   } catch (err) {

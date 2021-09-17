@@ -5,7 +5,7 @@ const practicePagePost = async (teamId, athleteId, repsArray) => {
   try {
     const body = { teamId, athleteId, repsArray };
     console.log(body); // ensures the object is constructed correctly
-    const response = await fetch('http://localhost:5000/practice',
+    const response = await fetch('http://localhost:5001/practice',
       {
         method: 'POST', // fetch makes GET request by default
         headers: { 'Content-Type': 'application/json' },

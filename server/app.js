@@ -41,5 +41,5 @@ app.use('/', homeRouter);
 
 
 // Start server
-app.listen(5000, () => {console.log('wrestlytics server has started on port 5000')});
+app.listen(5001, () => {console.log('wrestlytics server has started on port 5001')});
 // note: use `nodemon index` rather than `node index` to auto restart server on every change
