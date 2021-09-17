@@ -21,15 +21,15 @@ export default function App() {
   const [athleteChoice, setAthleteChoice] = useState({id: null, name: ''});
   const [userVars, setUserVars] = useState(null);
   const [techniqueChoice, setTechniqueChoice] = useState(null);
+  const [trigger, setTrigger] = useState(1); // When updated, triggers resetHome function
   const userReference = useRef(false);
   useEffect(() => { appGet(setUserVars, username, userReference) }, [username]);
-  useEffect(() => { userUpdated() }, [userVars]);
+  useEffect(() => { resetHome() }, [userVars, trigger]);
 
   // Reset and adjust relevant state vars when the user is updated
   // Add useRef variable that prevents userUpdated from doing anything until an initial user is chosen
-  const userUpdated = () => {
+  const resetHome = () => {
     if (userReference.current) {
-      setTabState('track');
       setAthleteChoice({id: null, name: ''});
       const newTechniqueChoice = JSON.parse(JSON.stringify(userVars.techniquesList));
       newTechniqueChoice.map((elem) => elem.checked = false);
@@ -122,10 +122,8 @@ export default function App() {
                       teamId={userVars.teamId}
                       activityId={userVars.activityId}
                       athleteChoice={athleteChoice}
-                      setAthleteChoice={setAthleteChoice}
                       techniqueChoice={techniqueChoice}
-                      setTechniqueChoice={setTechniqueChoice}
-                      setTabState={setTabState}
+                      setTrigger={setTrigger}
                     />
                   )
                 }
