@@ -12,8 +12,6 @@ const appGet = async (setUserVars, username, userReference) => {
     const response = await fetch(`http://localhost:5000/${username}`);
     const parsedResponse = await response.json(); // parses json response first
     setUserVars(parsedResponse);
-    // Update userReference to indicate a user has been chosen
-    userReference.current = true;
   } catch (err) {
     console.error(err.message);
   }

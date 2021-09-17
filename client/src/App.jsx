@@ -22,14 +22,14 @@ export default function App() {
   const [userVars, setUserVars] = useState(null);
   const [techniqueChoice, setTechniqueChoice] = useState(null);
   const [trigger, setTrigger] = useState(1); // When updated, triggers resetHome function
-  const userReference = useRef(false);
-  useEffect(() => { appGet(setUserVars, username, userReference) }, [username]);
+  // set userVars as null before appGet runs, so user does not briefly see the previously logged-in users' athletes
+  useEffect(() => { setUserVars(null); appGet(setUserVars, username); }, [username]);
   useEffect(() => { resetHome() }, [userVars, trigger]);
 
   // Reset and adjust relevant state vars when the user is updated
-  // Add useRef variable that prevents userUpdated from doing anything until an initial user is chosen
+  // if (userVars) ensures this doesn't run on first render or when appGet is retrieving new user data
   const resetHome = () => {
-    if (userReference.current) {
+    if (userVars) {
       setAthleteChoice({id: null, name: ''});
       const newTechniqueChoice = JSON.parse(JSON.stringify(userVars.techniquesList));
       newTechniqueChoice.map((elem) => elem.checked = false);
