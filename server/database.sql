@@ -169,14 +169,6 @@ VALUES
   -- tigers wrestling
   (21, 'Nick')
   -- robert, alex, grace on this team too
-
-  -- Wessex Wrestling
-  -- (23, 'Uthred'),
-  -- (24, 'Steapa'),
-  -- (25, 'Aethelflaed'),
-  -- (26, 'Beocca'),
-  -- (27, 'Sihtric'),
-  -- (28, 'Finan')
 ;
 
 INSERT INTO coaches (coach_id, first_name, username)
@@ -186,7 +178,6 @@ VALUES
   (3, 'Anne', 'anne'),
   (4, 'Frank', 'frank'),
   (5, 'Sharon', 'sharon')
-  -- (6, 'Alfred'),
 ;
 
 INSERT INTO teams (team_id, team_name, activity_id)
@@ -197,7 +188,6 @@ VALUES
   (4, 'Eagles', 5),
   (5, 'Warriors', 4),
   (6, 'Tigers', 1)
-  -- (7, 'Wessex', 1)
 ;
 
 INSERT INTO athletes_teams (athlete_id, team_id)
@@ -236,14 +226,6 @@ VALUES
   (16, 6),
   (17, 6),
   (18, 6)
-
-  -- Add later
-  -- (23, 7),
-  -- (24, 7),
-  -- (25, 7),
-  -- (26, 7),
-  -- (27, 7),
-  -- (28, 7)
 ;
 
 INSERT INTO coaches_teams (coach_id, team_id, default_team)
@@ -254,5 +236,4 @@ VALUES
   (3, 4, false),
   (4, 5, true),
   (5, 6, true)
-  -- (6, 7, true)
 ;
