@@ -1,0 +1,15 @@
+This should be sent in HTTP POST request when user clicks EndButton on PracticePage
+
+{
+   "practiceId": 12345,
+   "startTime": "2021-10-09T15:30:34",
+   "endTime": "2021-10-09T15:40:02",
+   "teamId": 1432,
+   "athleteId": 9834,
+   "activityId": 45,
+   "techniques": [
+      {"id": 4, "reps": 3},
+      {"id": 8, "reps": 1},
+      {"id": 7, "reps": 1}
+   ],
+}

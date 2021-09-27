@@ -1,0 +1,17 @@
+
+Example JSON payload:
+
+{
+   "practiceId": 12345,
+   "startTime": "2021-10-09T15:30:34",
+   "endTime": 2021-10-09T15:40:02",
+   "coachId": "coachUsername",
+   "teamId": 67890,
+   "athleteId": "athleteUserName",
+   "activity": "Wrestling",
+   "techniques": [
+      {"name": "arm chop", "reps": 3},
+      {"name": "double leg takedown", "reps": 1},
+      {"name": "half nelson", "reps": 1}
+   ],
+}
