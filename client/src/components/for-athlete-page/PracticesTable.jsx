@@ -45,7 +45,7 @@ export default function PracticesTable({ techniquesList, practiceHistory }) {
 
   return (
     <TableContainer component={Paper}>
-      <Table size="small" padding="none" style={{ tableLayout: 'fixed' }}>
+      <Table size="small" padding="none">
         <TableHead>
           <TableRow>
             <TableCell style={{ width: 86 }}>Practice Date</TableCell>
