@@ -25,7 +25,7 @@ At the moment, Wrestlytics enables coaches to count an athlete's reps of some pr
 4. Run ```npm install``` inside of server directory
 5. Run ```npm start``` inside of server directory
 
-  > Note that the database currently needs to be set up locally, so you must set up a postgres database called wrestlytics and run the sql commands found in ```./server/database.sql```.
+  > + Note that the database currently needs to be set up locally at port 5432 (see ```./server/db.js``` for setup). You must set up a postgres database called wrestlytics and run the sql commands found in ```./server/database.sql```.
 
 6. Run ```npm start``` inside of client directory
 
@@ -33,30 +33,30 @@ At the moment, Wrestlytics enables coaches to count an athlete's reps of some pr
 
 User data is shown in the second half of ```./server/database.sql```. A development goal for this project is to enable users to sign up and create their own teams.
 
-1. Coach Eric
-  username: eric
-  password: ericpassword
-  Eric coaches the Hawks wrestling team
+**1. Coach Eric**
+  + username: eric
+  + password: ericpassword
+  + Eric coaches the Hawks wrestling team
 
-2. Coach David
-  username: david
-  password: davidpassword
-  David coaches the Bulldogs basketball team
+**2. Coach David**
+  + username: david
+  + password: davidpassword
+  + David coaches the Bulldogs basketball team
 
-3. Coach Anne
-  username: anne
-  password: annepassword
-  Anne coaches the Flyers volleyball team AND the Eagles swim team. Currently, Wrestlytics doesn't provide functionality for a coach to switch  between their teams. This functionality will be added in the menu drawer at some point in the future.
+**3. Coach Anne**
+  + username: anne
+  + password: annepassword
+  + Anne coaches the Flyers volleyball team AND the Eagles swim team. Currently, Wrestlytics doesn't provide functionality for a coach to switch  between their teams. This functionality will be added in the menu drawer at some point in the future.
 
-4. Coach Frank
-  username: frank
-  password: frankpassword
-  Frank coaches the Warriors powerlifting team
+**4. Coach Frank**
+  + username: frank
+  + password: frankpassword
+  + Frank coaches the Warriors powerlifting team
 
-5. Coach Sharon
-  username: sharon
-  password: sharonpassword
-  Sharon coaches the Tigers wrestling team
+**5. Coach Sharon**
+  + username: sharon
+  + password: sharonpassword
+  + Sharon coaches the Tigers wrestling team
 
 ### Notes
 
